@@ -18,7 +18,7 @@ class UserController {
 	
 	def doLogin() {
 			
-		def user = Dosen.findWhere(nidn:params['nidn'], password:params['password'])
+		def user = Pembimbing.findWhere(nidn:params['nidn'], password:params['password'])
 		if (user) {
 			session.user = user.id
 			redirect(controller:'user')

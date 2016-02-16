@@ -40,7 +40,7 @@ body {
 	background: #ffffff;
 	color: #333333;
 	margin: 0 auto;
-	max-width: 960px;
+	max-width: 100%;
 	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
 	   -moz-box-shadow: 0 0 0.3em #255b17;
 	-webkit-box-shadow: 0 0 0.3em #255b17;
@@ -64,18 +64,58 @@ body {
 	height: 100%;
 }
 
-a:link, a:visited, a:hover {
-	color: #48802c;
+ a {
+	color: #666666;
+	padding: 0.25em 0.7em;
+	text-decoration: none;
+	   -moz-border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+	        border-radius: 0.3em;
 }
 
-a:hover, a:active {
-	outline: none; /* prevents outline in webkit on active links but retains it for tab focus */
+ a:active,  a:visited {
+	color: #666666;
+}
+
+ a:focus,  a:hover {
+	background-color: #999999;
+	color: #ffffff;
+	outline: none;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.no-borderradius  a:focus, .no-borderradius  a:hover {
+	background-color: transparent;
+	color: #444444;
+	text-decoration: underline;
+}
+
+.judul{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-weight: bold;
+	font-family: calibri;
+	color: #ffff00;
+	background-color: #abbf78;
+	padding-left: 45px;
+	outline: none;
+  -moz-box-shadow: 0 0 3px 1px #aaaaaa;
+	-webkit-box-shadow: 0 0 3px 6px #e0e0e0;
+	        box-shadow: 0 0 3px 6px #e0e0e0;
+}
+
+
+.judul h3{
+	color: #fff;
+	font-size: 30px;
+	margin-bottom: -5px;
 }
 
 h1 {
 	color: #48802c;
 	font-weight: normal;
-	font-size: 1.25em;
+	font-family: calibri;
+	font-size: 2em;
 	margin: 0.8em 0 0.3em 0;
 }
 
@@ -86,7 +126,6 @@ ul {
 img {
 	border: 0;
 }
-
 /* GENERAL */
 
 #grailsLogo a {

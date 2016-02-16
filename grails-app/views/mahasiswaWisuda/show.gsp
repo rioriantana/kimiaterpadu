@@ -13,7 +13,7 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" action="print" id="${mahasiswaWisudaInstance?.id}">Cetak Bukti Input</g:link></li>
 			</ul>
 		</div>
 		<div id="show-mahasiswaWisuda" class="content scaffold-show" role="main">
@@ -45,7 +45,7 @@
 				<li class="fieldcontain">
 					<span id="tanggalMasuk-label" class="property-label"><g:message code="mahasiswaWisuda.tanggalMasuk.label" default="Tanggal Masuk" /></span>
 					
-						<span class="property-value" aria-labelledby="tanggalMasuk-label"><g:formatDate date="${mahasiswaWisudaInstance?.tanggalMasuk}" /></span>
+						<span class="property-value" aria-labelledby="tanggalMasuk-label"><g:formatDate format="dd-MM-yyyy" date="${mahasiswaWisudaInstance?.tanggalMasuk}" /></span>
 					
 				</li>
 				</g:if>
@@ -54,7 +54,7 @@
 				<li class="fieldcontain">
 					<span id="tanggalLulus-label" class="property-label"><g:message code="mahasiswaWisuda.tanggalLulus.label" default="Tanggal Lulus" /></span>
 					
-						<span class="property-value" aria-labelledby="tanggalLulus-label"><g:formatDate date="${mahasiswaWisudaInstance?.tanggalLulus}" /></span>
+						<span class="property-value" aria-labelledby="tanggalLulus-label"><g:formatDate format="dd-MM-yyyy" date="${mahasiswaWisudaInstance?.tanggalLulus}" /></span>
 					
 				</li>
 				</g:if>
@@ -263,12 +263,14 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${mahasiswaWisudaInstance?.avatarType}">
+
+				<g:if test="${mahasiswaWisudaInstance?.avatar}">
 				<li class="fieldcontain">
-					<span id="avatarType-label" class="property-label"><g:message code="mahasiswaWisuda.avatarType.label" default="Avatar Type" /></span>
+					<span id="avatar-label" class="property-label">Foto</span>
 					
-						<span class="property-value" aria-labelledby="avatarType-label"><g:fieldValue bean="${mahasiswaWisudaInstance}" field="avatarType"/></span>
+						<span class="property-value" aria-labelledby="avatar-label">
+						<img class="avatar" width="100px" src="${createLink(controller:'mahasiswaWisuda', action:'avatar_image', id:mahasiswaWisudaInstance.id)}" />
+						</span>
 					
 				</li>
 				</g:if>

@@ -30,11 +30,11 @@
 					
 						<g:sortableColumn property="nama" title="${message(code: 'pembimbing.nama.label', default: 'Nama')}" />
 					
-						<g:sortableColumn property="kuota" title="${message(code: 'pembimbing.kuota.label', default: 'Kuota')}" />
+						<g:sortableColumn property="email" title="${message(code: 'pembimbing.email.label', default: 'Email')}" />
 					
-						<g:sortableColumn property="kodeAkses" title="${message(code: 'pembimbing.kodeAkses.label', default: 'Kode Akses')}" />
+						<g:sortableColumn property="alamat" title="${message(code: 'pembimbing.alamat.label', default: 'Alamat')}" />
 					
-						<g:sortableColumn property="role" title="${message(code: 'pembimbing.role.label', default: 'Role')}" />
+						<g:sortableColumn property="jenisKelamin" title="${message(code: 'pembimbing.jenisKelamin.label', default: 'Jenis Kelamin')}" />
 					
 					</tr>
 				</thead>
@@ -48,11 +48,11 @@
 					
 						<td>${fieldValue(bean: pembimbingInstance, field: "nama")}</td>
 					
-						<td>${fieldValue(bean: pembimbingInstance, field: "kuota")}</td>
+						<td>${fieldValue(bean: pembimbingInstance, field: "email")}</td>
 					
-						<td>${fieldValue(bean: pembimbingInstance, field: "kodeAkses")}</td>
+						<td>${fieldValue(bean: pembimbingInstance, field: "alamat")}</td>
 					
-						<td>${fieldValue(bean: pembimbingInstance, field: "role")}</td>
+						<td>${fieldValue(bean: pembimbingInstance, field: "jenisKelamin")}</td>
 					
 					</tr>
 				</g:each>

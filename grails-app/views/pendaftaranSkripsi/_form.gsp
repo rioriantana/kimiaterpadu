@@ -2,21 +2,12 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'nim', 'error')} ">
-	<label for="nim">
-		<g:message code="pendaftaranSkripsi.nim.label" default="Nim" />
+<div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'namaNIM', 'error')} ">
+	<label for="namaNIM">
+		<g:message code="pendaftaranSkripsi.namaNIM.label" default="Nama NIM" />
 		
 	</label>
-	<g:textField name="nim" value="${pendaftaranSkripsiInstance?.nim}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'nama', 'error')} ">
-	<label for="nama">
-		<g:message code="pendaftaranSkripsi.nama.label" default="Nama" />
-		
-	</label>
-	<g:textField name="nama" value="${pendaftaranSkripsiInstance?.nama}"/>
+	<g:select id="namaNIM" name="namaNIM.id" from="${kimiaterpadu.ProfilKeminatanMahasiswa.list()}" optionKey="id" value="${pendaftaranSkripsiInstance?.namaNIM?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 
@@ -47,24 +38,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'jenisKelamin', 'error')} ">
-	<label for="jenisKelamin">
-		<g:message code="pendaftaranSkripsi.jenisKelamin.label" default="Jenis Kelamin" />
-		
-	</label>
-	<g:textField name="jenisKelamin" value="${pendaftaranSkripsiInstance?.jenisKelamin}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'tempatTanggalLahir', 'error')} ">
-	<label for="tempatTanggalLahir">
-		<g:message code="pendaftaranSkripsi.tempatTanggalLahir.label" default="Tempat Tanggal Lahir" />
-		
-	</label>
-	<g:textField name="tempatTanggalLahir" value="${pendaftaranSkripsiInstance?.tempatTanggalLahir}"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'email', 'error')} ">
 	<label for="email">
 		<g:message code="pendaftaranSkripsi.email.label" default="Email" />
@@ -74,12 +47,39 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'telepon', 'error')} ">
-	<label for="telepon">
-		<g:message code="pendaftaranSkripsi.telepon.label" default="Telepon" />
+<div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'tanggalSeminarProposal', 'error')} ">
+	<label for="tanggalSeminarProposal">
+		<g:message code="pendaftaranSkripsi.tanggalSeminarProposal.label" default="Tanggal Seminar Proposal" />
 		
 	</label>
-	<g:textField name="telepon" value="${pendaftaranSkripsiInstance?.telepon}"/>
+	<g:datePicker name="tanggalSeminarProposal" precision="day"  value="${pendaftaranSkripsiInstance?.tanggalSeminarProposal}" default="none" noSelection="['': '']" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'tanggalSeminarHasil', 'error')} ">
+	<label for="tanggalSeminarHasil">
+		<g:message code="pendaftaranSkripsi.tanggalSeminarHasil.label" default="Tanggal Seminar Hasil" />
+		
+	</label>
+	<g:datePicker name="tanggalSeminarHasil" precision="day"  value="${pendaftaranSkripsiInstance?.tanggalSeminarHasil}" default="none" noSelection="['': '']" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'tanggalUjianSkripsi', 'error')} ">
+	<label for="tanggalUjianSkripsi">
+		<g:message code="pendaftaranSkripsi.tanggalUjianSkripsi.label" default="Tanggal Ujian Skripsi" />
+		
+	</label>
+	<g:datePicker name="tanggalUjianSkripsi" precision="day"  value="${pendaftaranSkripsiInstance?.tanggalUjianSkripsi}" default="none" noSelection="['': '']" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'status', 'error')} ">
+	<label for="status">
+		<g:message code="pendaftaranSkripsi.status.label" default="Status" />
+		
+	</label>
+	<g:textField name="status" value="${pendaftaranSkripsiInstance?.status}"/>
 
 </div>
 

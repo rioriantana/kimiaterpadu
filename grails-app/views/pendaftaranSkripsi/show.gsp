@@ -23,20 +23,11 @@
 			</g:if>
 			<ol class="property-list pendaftaranSkripsi">
 			
-				<g:if test="${pendaftaranSkripsiInstance?.nim}">
+				<g:if test="${pendaftaranSkripsiInstance?.namaNIM}">
 				<li class="fieldcontain">
-					<span id="nim-label" class="property-label"><g:message code="pendaftaranSkripsi.nim.label" default="Nim" /></span>
+					<span id="namaNIM-label" class="property-label"><g:message code="pendaftaranSkripsi.namaNIM.label" default="Nama NIM" /></span>
 					
-						<span class="property-value" aria-labelledby="nim-label"><g:fieldValue bean="${pendaftaranSkripsiInstance}" field="nim"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${pendaftaranSkripsiInstance?.nama}">
-				<li class="fieldcontain">
-					<span id="nama-label" class="property-label"><g:message code="pendaftaranSkripsi.nama.label" default="Nama" /></span>
-					
-						<span class="property-value" aria-labelledby="nama-label"><g:fieldValue bean="${pendaftaranSkripsiInstance}" field="nama"/></span>
+						<span class="property-value" aria-labelledby="namaNIM-label"><g:link controller="profilKeminatanMahasiswa" action="show" id="${pendaftaranSkripsiInstance?.namaNIM?.id}">${pendaftaranSkripsiInstance?.namaNIM?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -68,24 +59,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${pendaftaranSkripsiInstance?.jenisKelamin}">
-				<li class="fieldcontain">
-					<span id="jenisKelamin-label" class="property-label"><g:message code="pendaftaranSkripsi.jenisKelamin.label" default="Jenis Kelamin" /></span>
-					
-						<span class="property-value" aria-labelledby="jenisKelamin-label"><g:fieldValue bean="${pendaftaranSkripsiInstance}" field="jenisKelamin"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${pendaftaranSkripsiInstance?.tempatTanggalLahir}">
-				<li class="fieldcontain">
-					<span id="tempatTanggalLahir-label" class="property-label"><g:message code="pendaftaranSkripsi.tempatTanggalLahir.label" default="Tempat Tanggal Lahir" /></span>
-					
-						<span class="property-value" aria-labelledby="tempatTanggalLahir-label"><g:fieldValue bean="${pendaftaranSkripsiInstance}" field="tempatTanggalLahir"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${pendaftaranSkripsiInstance?.email}">
 				<li class="fieldcontain">
 					<span id="email-label" class="property-label"><g:message code="pendaftaranSkripsi.email.label" default="Email" /></span>
@@ -95,11 +68,38 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${pendaftaranSkripsiInstance?.telepon}">
+				<g:if test="${pendaftaranSkripsiInstance?.tanggalSeminarProposal}">
 				<li class="fieldcontain">
-					<span id="telepon-label" class="property-label"><g:message code="pendaftaranSkripsi.telepon.label" default="Telepon" /></span>
+					<span id="tanggalSeminarProposal-label" class="property-label"><g:message code="pendaftaranSkripsi.tanggalSeminarProposal.label" default="Tanggal Seminar Proposal" /></span>
 					
-						<span class="property-value" aria-labelledby="telepon-label"><g:fieldValue bean="${pendaftaranSkripsiInstance}" field="telepon"/></span>
+						<span class="property-value" aria-labelledby="tanggalSeminarProposal-label"><g:formatDate date="${pendaftaranSkripsiInstance?.tanggalSeminarProposal}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${pendaftaranSkripsiInstance?.tanggalSeminarHasil}">
+				<li class="fieldcontain">
+					<span id="tanggalSeminarHasil-label" class="property-label"><g:message code="pendaftaranSkripsi.tanggalSeminarHasil.label" default="Tanggal Seminar Hasil" /></span>
+					
+						<span class="property-value" aria-labelledby="tanggalSeminarHasil-label"><g:formatDate date="${pendaftaranSkripsiInstance?.tanggalSeminarHasil}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${pendaftaranSkripsiInstance?.tanggalUjianSkripsi}">
+				<li class="fieldcontain">
+					<span id="tanggalUjianSkripsi-label" class="property-label"><g:message code="pendaftaranSkripsi.tanggalUjianSkripsi.label" default="Tanggal Ujian Skripsi" /></span>
+					
+						<span class="property-value" aria-labelledby="tanggalUjianSkripsi-label"><g:formatDate date="${pendaftaranSkripsiInstance?.tanggalUjianSkripsi}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${pendaftaranSkripsiInstance?.status}">
+				<li class="fieldcontain">
+					<span id="status-label" class="property-label"><g:message code="pendaftaranSkripsi.status.label" default="Status" /></span>
+					
+						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${pendaftaranSkripsiInstance}" field="status"/></span>
 					
 				</li>
 				</g:if>

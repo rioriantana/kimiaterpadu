@@ -24,9 +24,7 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="nim" title="${message(code: 'pendaftaranSkripsi.nim.label', default: 'Nim')}" />
-					
-						<g:sortableColumn property="nama" title="${message(code: 'pendaftaranSkripsi.nama.label', default: 'Nama')}" />
+						<th><g:message code="pendaftaranSkripsi.namaNIM.label" default="Nama NIM" /></th>
 					
 						<th><g:message code="pendaftaranSkripsi.pembimbing1.label" default="Pembimbing1" /></th>
 					
@@ -34,7 +32,9 @@
 					
 						<g:sortableColumn property="judulSkripsi" title="${message(code: 'pendaftaranSkripsi.judulSkripsi.label', default: 'Judul Skripsi')}" />
 					
-						<g:sortableColumn property="jenisKelamin" title="${message(code: 'pendaftaranSkripsi.jenisKelamin.label', default: 'Jenis Kelamin')}" />
+						<g:sortableColumn property="email" title="${message(code: 'pendaftaranSkripsi.email.label', default: 'Email')}" />
+					
+						<g:sortableColumn property="tanggalSeminarProposal" title="${message(code: 'pendaftaranSkripsi.tanggalSeminarProposal.label', default: 'Tanggal Seminar Proposal')}" />
 					
 					</tr>
 				</thead>
@@ -42,9 +42,7 @@
 				<g:each in="${pendaftaranSkripsiInstanceList}" status="i" var="pendaftaranSkripsiInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${pendaftaranSkripsiInstance.id}">${fieldValue(bean: pendaftaranSkripsiInstance, field: "nim")}</g:link></td>
-					
-						<td>${fieldValue(bean: pendaftaranSkripsiInstance, field: "nama")}</td>
+						<td><g:link action="show" id="${pendaftaranSkripsiInstance.id}">${fieldValue(bean: pendaftaranSkripsiInstance, field: "namaNIM")}</g:link></td>
 					
 						<td>${fieldValue(bean: pendaftaranSkripsiInstance, field: "pembimbing1")}</td>
 					
@@ -52,7 +50,9 @@
 					
 						<td>${fieldValue(bean: pendaftaranSkripsiInstance, field: "judulSkripsi")}</td>
 					
-						<td>${fieldValue(bean: pendaftaranSkripsiInstance, field: "jenisKelamin")}</td>
+						<td>${fieldValue(bean: pendaftaranSkripsiInstance, field: "email")}</td>
+					
+						<td><g:formatDate date="${pendaftaranSkripsiInstance.tanggalSeminarProposal}" /></td>
 					
 					</tr>
 				</g:each>

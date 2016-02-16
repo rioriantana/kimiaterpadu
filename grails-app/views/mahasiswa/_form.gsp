@@ -22,7 +22,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: mahasiswaInstance, field: 'ttl', 'error')} ">
 	<label for="ttl">
-		<g:message code="mahasiswa.ttl.label" default="Ttl" />
+		<g:message code="mahasiswa.ttl.label" default="Tempat tanggal Lahir" />
 		
 	</label>
 	<g:textField name="ttl" value="${mahasiswaInstance?.ttl}"/>
@@ -43,7 +43,7 @@
 		<g:message code="mahasiswa.jenisKelamin.label" default="Jenis Kelamin" />
 		
 	</label>
-	<g:select name="jenisKelamin" from="${mahasiswaInstance.constraints.jenisKelamin.inList}" value="${mahasiswaInstance?.jenisKelamin}" valueMessagePrefix="mahasiswa.jenisKelamin" noSelection="['': '']"/>
+	<g:select name="jenisKelamin" from="${mahasiswaInstance.constraints.jenisKelamin.inList}" value="${mahasiswaInstance?.jenisKelamin}" valueMessagePrefix="mahasiswa.jenisKelamin" />
 
 </div>
 
@@ -187,7 +187,7 @@
 		<g:message code="mahasiswa.propinsiAsalSekolah.label" default="Propinsi Asal Sekolah" />
 		
 	</label>
-	<g:select name="propinsiAsalSekolah" from="${mahasiswaInstance.constraints.propinsiAsalSekolah.inList}" value="${mahasiswaInstance?.propinsiAsalSekolah}" valueMessagePrefix="mahasiswa.propinsiAsalSekolah" noSelection="['': '']"/>
+	<g:select name="propinsiAsalSekolah" from="${mahasiswaInstance.constraints.propinsiAsalSekolah.inList}" value="${mahasiswaInstance?.propinsiAsalSekolah}" valueMessagePrefix="mahasiswa.propinsiAsalSekolah" />
 
 </div>
 
@@ -196,7 +196,7 @@
 		<g:message code="mahasiswa.jalurMasuk.label" default="Jalur Masuk" />
 		
 	</label>
-	<g:select name="jalurMasuk" from="${mahasiswaInstance.constraints.jalurMasuk.inList}" value="${mahasiswaInstance?.jalurMasuk}" valueMessagePrefix="mahasiswa.jalurMasuk" noSelection="['': '']"/>
+	<g:select name="jalurMasuk" from="${mahasiswaInstance.constraints.jalurMasuk.inList}" value="${mahasiswaInstance?.jalurMasuk}" valueMessagePrefix="mahasiswa.jalurMasuk" />
 
 </div>
 

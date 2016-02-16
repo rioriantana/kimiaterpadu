@@ -9,6 +9,19 @@ import grails.transaction.Transactional
 class MahasiswaWisudaController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+     private static final okcontents = ['image/png', 'image/jpeg', 'image/gif']
+    def avatar_image() {
+        def avatarUser = MahasiswaWisuda.get(params.id)
+        if (!avatarUser) {
+            render "OK"
+        } else {
+            response.contentType = avatarUser.avatarType
+            response.contentLength = avatarUser.avatar.size()
+            OutputStream out = response.outputStream
+            out.write(avatarUser.avatar)
+            out.close()
+        }
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -16,6 +29,10 @@ class MahasiswaWisudaController {
     }
 
     def show(MahasiswaWisuda mahasiswaWisudaInstance) {
+        respond mahasiswaWisudaInstance
+    }
+
+    def print(MahasiswaWisuda mahasiswaWisudaInstance) {
         respond mahasiswaWisudaInstance
     }
 
@@ -34,7 +51,27 @@ class MahasiswaWisudaController {
             respond mahasiswaWisudaInstance.errors, view:'create'
             return
         }
+        def ipk = params.ipk
+        if (ipk>='2.00' && ipk<='2.75') {
+            mahasiswaWisudaInstance.predikatLulus = "Memuaskan"
+        }
+        else if(ipk<='3.49'){
+            mahasiswaWisudaInstance.predikatLulus = "Sangat Memuaskan"
+        }
+        else{
+            mahasiswaWisudaInstance.predikatLulus = "Cumlaude"
+        }
 
+
+        def f = request.getFile('avatar')
+        def masuk = params.tanggalMasuk
+        def keluar = params.tanggalLulus
+        def lama = (keluar - masuk)/30
+        if (okcontents.contains(f.getContentType())) {
+        mahasiswaWisudaInstance.avatar = f.bytes
+        mahasiswaWisudaInstance.avatarType = f.contentType 
+    }
+        mahasiswaWisudaInstance.lamaStudi = Math.ceil(lama)
         mahasiswaWisudaInstance.save flush:true
 
         request.withFormat {

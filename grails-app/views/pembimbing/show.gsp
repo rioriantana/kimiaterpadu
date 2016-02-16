@@ -50,11 +50,38 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${pembimbingInstance?.email}">
+				<li class="fieldcontain">
+					<span id="email-label" class="property-label"><g:message code="pembimbing.email.label" default="Email" /></span>
+					
+						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${pembimbingInstance}" field="email"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${pembimbingInstance?.alamat}">
+				<li class="fieldcontain">
+					<span id="alamat-label" class="property-label"><g:message code="pembimbing.alamat.label" default="Alamat" /></span>
+					
+						<span class="property-value" aria-labelledby="alamat-label"><g:fieldValue bean="${pembimbingInstance}" field="alamat"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${pembimbingInstance?.jenisKelamin}">
+				<li class="fieldcontain">
+					<span id="jenisKelamin-label" class="property-label"><g:message code="pembimbing.jenisKelamin.label" default="Jenis Kelamin" /></span>
+					
+						<span class="property-value" aria-labelledby="jenisKelamin-label"><g:fieldValue bean="${pembimbingInstance}" field="jenisKelamin"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${pembimbingInstance?.kuota}">
 				<li class="fieldcontain">
-					<span id="kuota-label" class="property-label"><g:message code="pembimbing.kuota.label" default="Kuota" /></span>
+					<span id="kuota-label" class="property-label"><g:message code="pembimbing.kuota.label" default="Kuota Sisa" /></span>
 					
-						<span class="property-value" aria-labelledby="kuota-label"><g:fieldValue bean="${pembimbingInstance}" field="kuota"/></span>
+						<span class="property-value" aria-labelledby="kuota-label">${8 - pembimbingInstance.kuota.toInteger()}</span>
 					
 				</li>
 				</g:if>

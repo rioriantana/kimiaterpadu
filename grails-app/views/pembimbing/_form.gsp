@@ -29,6 +29,33 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: pembimbingInstance, field: 'email', 'error')} ">
+	<label for="email">
+		<g:message code="pembimbing.email.label" default="Email" />
+		
+	</label>
+	<g:textField name="email" value="${pembimbingInstance?.email}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: pembimbingInstance, field: 'alamat', 'error')} ">
+	<label for="alamat">
+		<g:message code="pembimbing.alamat.label" default="Alamat" />
+		
+	</label>
+	<g:textField name="alamat" value="${pembimbingInstance?.alamat}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: pembimbingInstance, field: 'jenisKelamin', 'error')} ">
+	<label for="jenisKelamin">
+		<g:message code="pembimbing.jenisKelamin.label" default="Jenis Kelamin" />
+		
+	</label>
+	<g:select name="jenisKelamin" from="${pembimbingInstance.constraints.jenisKelamin.inList}" value="${pembimbingInstance?.jenisKelamin}" valueMessagePrefix="pembimbing.jenisKelamin" noSelection="['': '']"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: pembimbingInstance, field: 'kuota', 'error')} ">
 	<label for="kuota">
 		<g:message code="pembimbing.kuota.label" default="Kuota" />

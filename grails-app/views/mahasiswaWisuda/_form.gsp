@@ -4,7 +4,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: mahasiswaWisudaInstance, field: 'nim', 'error')} ">
 	<label for="nim">
-		<g:message code="mahasiswaWisuda.nim.label" default="Nim" />
+		<g:message code="mahasiswaWisuda.nim.label" default="NIM" />
 		
 	</label>
 	<g:textField name="nim" value="${mahasiswaWisudaInstance?.nim}"/>
@@ -25,7 +25,7 @@
 		<g:message code="mahasiswaWisuda.tanggalMasuk.label" default="Tanggal Masuk" />
 		
 	</label>
-	<g:datePicker name="tanggalMasuk" precision="day"  value="${mahasiswaWisudaInstance?.tanggalMasuk}" default="none" noSelection="['': '']" />
+	<g:datePicker name="tanggalMasuk" precision="day"  value="${mahasiswaWisudaInstance?.tanggalMasuk}" default="none" noSelection="['': '']" relativeYears="[-10..10]" default="${new Date()}" />
 
 </div>
 
@@ -34,7 +34,7 @@
 		<g:message code="mahasiswaWisuda.tanggalLulus.label" default="Tanggal Lulus" />
 		
 	</label>
-	<g:datePicker name="tanggalLulus" precision="day"  value="${mahasiswaWisudaInstance?.tanggalLulus}" default="none" noSelection="['': '']" />
+	<g:datePicker name="tanggalLulus" precision="day"  value="${mahasiswaWisudaInstance?.tanggalLulus}" default="none" noSelection="['': '']" relativeYears="[-10..10]" default="${new Date()}" />
 
 </div>
 
@@ -43,36 +43,19 @@
 		<g:message code="mahasiswaWisuda.cuti.label" default="Cuti" />
 		
 	</label>
-	<g:textField name="cuti" value="${mahasiswaWisudaInstance?.cuti}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: mahasiswaWisudaInstance, field: 'lamaStudi', 'error')} ">
-	<label for="lamaStudi">
-		<g:message code="mahasiswaWisuda.lamaStudi.label" default="Lama Studi" />
-		
-	</label>
-	<g:textField name="lamaStudi" value="${mahasiswaWisudaInstance?.lamaStudi}"/>
+	<g:field type="number" max="10" min="0" name="cuti" value="${mahasiswaWisudaInstance?.cuti}"/> Bulan
 
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: mahasiswaWisudaInstance, field: 'ipk', 'error')} ">
 	<label for="ipk">
-		<g:message code="mahasiswaWisuda.ipk.label" default="Ipk" />
+		<g:message code="mahasiswaWisuda.ipk.label" default="IPK" />
 		
 	</label>
-	<g:textField name="ipk" value="${mahasiswaWisudaInstance?.ipk}"/>
+	<g:field type="number" max="4" min="0" step="0.01" name="ipk" value="${mahasiswaWisudaInstance?.ipk}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: mahasiswaWisudaInstance, field: 'predikatLulus', 'error')} ">
-	<label for="predikatLulus">
-		<g:message code="mahasiswaWisuda.predikatLulus.label" default="Predikat Lulus" />
-		
-	</label>
-	<g:textField name="predikatLulus" value="${mahasiswaWisudaInstance?.predikatLulus}"/>
-
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: mahasiswaWisudaInstance, field: 'pembimbing1', 'error')} ">
 	<label for="pembimbing1">
@@ -97,7 +80,7 @@
 		<g:message code="mahasiswaWisuda.judulSkripsi.label" default="Judul Skripsi" />
 		
 	</label>
-	<g:textField name="judulSkripsi" value="${mahasiswaWisudaInstance?.judulSkripsi}"/>
+	<g:textArea rows="5" cols="5" name="judulSkripsi" value="${mahasiswaWisudaInstance?.judulSkripsi}"/>
 
 </div>
 
@@ -133,7 +116,7 @@
 		<g:message code="mahasiswaWisuda.propinsiSMA.label" default="Propinsi SMA" />
 		
 	</label>
-	<g:select name="propinsiSMA" from="${mahasiswaWisudaInstance.constraints.propinsiSMA.inList}" value="${mahasiswaWisudaInstance?.propinsiSMA}" valueMessagePrefix="mahasiswaWisuda.propinsiSMA" noSelection="['': '']"/>
+	<g:select name="propinsiSMA" from="${mahasiswaWisudaInstance.constraints.propinsiSMA.inList}" value="${mahasiswaWisudaInstance?.propinsiSMA}" valueMessagePrefix="mahasiswaWisuda.propinsiSMA" />
 
 </div>
 
@@ -142,7 +125,7 @@
 		<g:message code="mahasiswaWisuda.jenisKelamin.label" default="Jenis Kelamin" />
 		
 	</label>
-	<g:select name="jenisKelamin" from="${mahasiswaWisudaInstance.constraints.jenisKelamin.inList}" value="${mahasiswaWisudaInstance?.jenisKelamin}" valueMessagePrefix="mahasiswaWisuda.jenisKelamin" noSelection="['': '']"/>
+	<g:select name="jenisKelamin" from="${mahasiswaWisudaInstance.constraints.jenisKelamin.inList}" value="${mahasiswaWisudaInstance?.jenisKelamin}" valueMessagePrefix="mahasiswaWisuda.jenisKelamin" />
 
 </div>
 
@@ -151,7 +134,7 @@
 		<g:message code="mahasiswaWisuda.wargaNegara.label" default="Warga Negara" />
 		
 	</label>
-	<g:select name="wargaNegara" from="${mahasiswaWisudaInstance.constraints.wargaNegara.inList}" value="${mahasiswaWisudaInstance?.wargaNegara}" valueMessagePrefix="mahasiswaWisuda.wargaNegara" noSelection="['': '']"/>
+	<g:select name="wargaNegara" from="${mahasiswaWisudaInstance.constraints.wargaNegara.inList}" value="${mahasiswaWisudaInstance?.wargaNegara}" valueMessagePrefix="mahasiswaWisuda.wargaNegara" />
 
 </div>
 
@@ -169,7 +152,7 @@
 		<g:message code="mahasiswaWisuda.email.label" default="Email" />
 		
 	</label>
-	<g:textField name="email" value="${mahasiswaWisudaInstance?.email}"/>
+	<g:field type="email" name="email" value="${mahasiswaWisudaInstance?.email}"/>
 
 </div>
 
@@ -178,7 +161,7 @@
 		<g:message code="mahasiswaWisuda.alamatTempatTinggal.label" default="Alamat Tempat Tinggal" />
 		
 	</label>
-	<g:textField name="alamatTempatTinggal" value="${mahasiswaWisudaInstance?.alamatTempatTinggal}"/>
+	<g:textArea rows="5" cols="5" name="alamatTempatTinggal" value="${mahasiswaWisudaInstance?.alamatTempatTinggal}"/>
 
 </div>
 
@@ -232,25 +215,17 @@
 		<g:message code="mahasiswaWisuda.alamatOrangTua.label" default="Alamat Orang Tua" />
 		
 	</label>
-	<g:textField name="alamatOrangTua" value="${mahasiswaWisudaInstance?.alamatOrangTua}"/>
+	<g:textArea rows="5" cols="3" name="alamatOrangTua" value="${mahasiswaWisudaInstance?.alamatOrangTua}"/>
 
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: mahasiswaWisudaInstance, field: 'avatar', 'error')} ">
 	<label for="avatar">
-		<g:message code="mahasiswaWisuda.avatar.label" default="Avatar" />
+		<g:message code="mahasiswaWisuda.avatar.label" default="Foto max(100Kb)" />
 		
 	</label>
 	<input type="file" id="avatar" name="avatar" />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: mahasiswaWisudaInstance, field: 'avatarType', 'error')} ">
-	<label for="avatarType">
-		<g:message code="mahasiswaWisuda.avatarType.label" default="Avatar Type" />
-		
-	</label>
-	<g:textField name="avatarType" value="${mahasiswaWisudaInstance?.avatarType}"/>
-
-</div>
 
