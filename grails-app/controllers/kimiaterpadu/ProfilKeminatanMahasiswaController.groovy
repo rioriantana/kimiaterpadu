@@ -9,6 +9,14 @@ import grails.transaction.Transactional
 class ProfilKeminatanMahasiswaController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+     def beforeInterceptor = [action:this.&checkUser, except: ['create', 'save']]
+     def checkUser() {
+        if(!session.user) {
+            // i.e. user not logged in
+            redirect(controller:'user', action:'login')
+            return false
+        }
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -39,8 +47,8 @@ class ProfilKeminatanMahasiswaController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'profilKeminatanMahasiswa.label', default: 'ProfilKeminatanMahasiswa'), profilKeminatanMahasiswaInstance.id])
-                redirect profilKeminatanMahasiswaInstance
+                flash.message = "Selamat akun anda telah terdaftar, silahkan melakukan login."
+                redirect (url:'/')
             }
             '*' { respond profilKeminatanMahasiswaInstance, [status: CREATED] }
         }

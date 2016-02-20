@@ -98,6 +98,9 @@
 			
 		</div>
 		<div id="page-body" role="main">
+		<g:if test="${flash.message}">
+			<div class="message" role="status">${flash.message}</div>
+			</g:if>
 			<h1>Selamat Datang di Sistem Informasi Kimia Terpadu</h1>
 			<p>Congratulations, you have successfully started your first Grails application! At the moment
 			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
@@ -107,11 +110,9 @@
 			<div id="controller-list" role="navigation">
 				<h2>Available Controllers:</h2>
 				<ul>
-				<li><g:link controller="mahasiswa" class="list" >Mahasiswa</g:link></li>
-				<li><g:link controller="mahasiswaWisuda" class="list" >Wisuda</g:link></li>
-				<li><g:link controller="profilKeminatanMahasiswa" class="list" >Profil Keminatan Mahasiswa</g:link></li>
-				<li><g:link controller="pendaftaranSkripsi" class="list" >Pendaftaran Skripsi</g:link></li>
-				<li><g:link controller="Pembimbing" class="list" >Dosen Pembimbing Skripsi</g:link></li>
+				<li><g:link controller="mahasiswa" class="list" > Isi Biodata Mahasiswa Baru</g:link></li>
+				<li><g:link controller="mahasiswaWisuda" class="list" >Isi Biodata Mahasiswa Wisuda</g:link></li>
+				<li><g:link controller="profilKeminatanMahasiswa" class="list" action="create" >Pendaftaran Keminatan (untuk mahasiswa < 110 SKS )</g:link></li>
 				
 				</ul>
 			</div>

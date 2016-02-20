@@ -49,13 +49,13 @@
 
 			<h2>Login</h2>
 
+	<g:form action="doLogin">
 			<div id="username_input">
 
 				<div id="username_inputleft"></div>
-	<g:form action="doLogin">
 				<div id="username_inputmiddle">
 			
-					<input type="text" name="nidn" id="url" placeholder="Username" onclick="this.value = ''">
+					<input type="text" name="nim" id="url" placeholder="Username" onclick="this.value = ''">
 					<img id="url_user" src="${resource(dir: 'images', file: 'mailicon.png')}" alt="">
 				</div>
 
@@ -77,6 +77,7 @@
 
 			</div>
 
+
 			<div id="submit">
 				<input type="image" src="${resource(dir: 'images', file: 'submit_hover.png')}" id="submit1" value="Sign In">
 				<input type="image" src="${resource(dir: 'images', file: 'submit.png')}" id="submit2" value="Sign In">
@@ -91,7 +92,7 @@
 		<div id="wrapperbottom"></div>
 		
 		<div id="powered">
-		<p>Powered by <a href="#">Fisika ICT</a></p>
+		<p>Belum Punya Akun? Daftar <g:link controller="profilKeminatanMahasiswa" action="Create">Disini</g:link></p>
 		</div>
 	</div>
 

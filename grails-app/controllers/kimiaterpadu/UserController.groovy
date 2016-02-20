@@ -10,6 +10,14 @@ class UserController {
 	
     def login() { 
 			if(session.user) {
+			redirect(uri: '/')
+					return
+			}
+			session.invalidate()
+	}
+
+	def loginDosen() { 
+			if(session.user) {
 					redirect(controller:'user')
 					return
 			}
@@ -17,15 +25,25 @@ class UserController {
 	}
 	
 	def doLogin() {
-			
-		def user = Pembimbing.findWhere(nidn:params['nidn'], password:params['password'])
+		def user = ProfilKeminatanMahasiswa.findWhere(nim:params['nim'], password:params['password'])
 		if (user) {
 			session.user = user.id
-			redirect(controller:'user')
+			session.role = "MAHASISWA"
+			redirect(uri: '/')
 		} else
 			redirect(controller:'user',action:'login')
 	}
 	
+	def doLoginDosen() {
+		def user = Pembimbing.findWhere(nidn:params['nidn'], password:params['password'])
+		if (user) {
+			session.user = user.id
+			session.role = user.role
+			redirect(controller:'user')
+		} else
+			redirect(controller:'user',action:'loginDosen')
+	}
+
 	def logout() {
 			session.invalidate()
 			redirect(controller:'user',action:'login')
