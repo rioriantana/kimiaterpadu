@@ -9,7 +9,7 @@ import grails.transaction.Transactional
 class ProfilKeminatanMahasiswaController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-     def beforeInterceptor = [action:this.&checkUser, except: ['create', 'save']]
+    // def beforeInterceptor = [action:this.&checkUser, except: ['create', 'save']]
      def checkUser() {
         if(!session.user) {
             // i.e. user not logged in
@@ -75,7 +75,7 @@ class ProfilKeminatanMahasiswaController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'ProfilKeminatanMahasiswa.label', default: 'ProfilKeminatanMahasiswa'), profilKeminatanMahasiswaInstance.id])
-                redirect profilKeminatanMahasiswaInstance
+                redirect (action: "profil", id: profilKeminatanMahasiswaInstance.id)
             }
             '*'{ respond profilKeminatanMahasiswaInstance, [status: OK] }
         }
@@ -108,5 +108,8 @@ class ProfilKeminatanMahasiswaController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+    def profil(ProfilKeminatanMahasiswa profilKeminatanMahasiswaInstance){
+    respond profilKeminatanMahasiswaInstance
     }
 }

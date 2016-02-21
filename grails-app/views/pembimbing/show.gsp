@@ -79,9 +79,9 @@
 			
 				<g:if test="${pembimbingInstance?.kuota}">
 				<li class="fieldcontain">
-					<span id="kuota-label" class="property-label"><g:message code="pembimbing.kuota.label" default="Kuota Sisa" /></span>
+					<span id="kuota-label" class="property-label"><g:message code="pembimbing.kuota.label" default="Kuota Kosong" /></span>
 					
-						<span class="property-value" aria-labelledby="kuota-label">${8 - pembimbingInstance.kuota.toInteger()}</span>
+						<span class="property-value" aria-labelledby="kuota-label">${pembimbingInstance.kuota.toInteger()}</span>
 					
 				</li>
 				</g:if>

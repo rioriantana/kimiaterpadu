@@ -28,32 +28,30 @@
 					
 						<g:sortableColumn property="nama" title="${message(code: 'profilKeminatanMahasiswa.nama.label', default: 'Nama')}" />
 					
-						<g:sortableColumn property="jenisKelamin" title="${message(code: 'profilKeminatanMahasiswa.jenisKelamin.label', default: 'Jenis Kelamin')}" />
-					
-						<g:sortableColumn property="tempatTanggalLahir" title="${message(code: 'profilKeminatanMahasiswa.tempatTanggalLahir.label', default: 'Tempat Tanggal Lahir')}" />
-					
-						<g:sortableColumn property="email" title="${message(code: 'profilKeminatanMahasiswa.email.label', default: 'Email')}" />
-					
 						<g:sortableColumn property="metodePemilihanPembimbing" title="${message(code: 'profilKeminatanMahasiswa.metodePemilihanPembimbing.label', default: 'Metode Pemilihan Pembimbing')}" />
 					
+						<g:sortableColumn property="dosenPembimbing" title="${message(code: 'profilKeminatanMahasiswa.dosenPembimbing.label', default: 'Dosen Pembimbing')}" />
+					
+						<g:sortableColumn property="keminatan" title="${message(code: 'profilKeminatanMahasiswa.keminatan.label', default: 'Keminatan')}" />
+						
+						<g:sortableColumn property="email" title="${message(code: 'profilKeminatanMahasiswa.email.label', default: 'Action')}" />
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${profilKeminatanMahasiswaInstanceList}" status="i" var="profilKeminatanMahasiswaInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${profilKeminatanMahasiswaInstance.id}">${fieldValue(bean: profilKeminatanMahasiswaInstance, field: "nim")}</g:link></td>
+						<td>${fieldValue(bean: profilKeminatanMahasiswaInstance, field: "nim")}</td>
 					
 						<td>${fieldValue(bean: profilKeminatanMahasiswaInstance, field: "nama")}</td>
 					
-						<td>${fieldValue(bean: profilKeminatanMahasiswaInstance, field: "jenisKelamin")}</td>
-					
-						<td>${fieldValue(bean: profilKeminatanMahasiswaInstance, field: "tempatTanggalLahir")}</td>
-					
-						<td>${fieldValue(bean: profilKeminatanMahasiswaInstance, field: "email")}</td>
-					
 						<td>${fieldValue(bean: profilKeminatanMahasiswaInstance, field: "metodePemilihanPembimbing")}</td>
 					
+						<td>${fieldValue(bean: profilKeminatanMahasiswaInstance, field: "dosenPembimbing")}</td>
+					
+						<td>${fieldValue(bean: profilKeminatanMahasiswaInstance, field: "keminatan")}</td>
+
+						<td><g:link>Setujui | Edit</g:link></td>
 					</tr>
 				</g:each>
 				</tbody>

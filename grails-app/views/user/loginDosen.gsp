@@ -55,7 +55,7 @@
 				<div id="username_inputleft"></div>
 				<div id="username_inputmiddle">
 			
-					<input type="text" name="nim" id="url" placeholder="NIM" onclick="this.value = ''">
+					<input type="text" name="nidn" id="url" placeholder="NIDN" onclick="this.value = ''">
 					<img id="url_user" src="${resource(dir: 'images', file: 'mailicon.png')}" alt="">
 				</div>
 
@@ -92,7 +92,7 @@
 		<div id="wrapperbottom"></div>
 		
 		<div id="powered">
-		<p>Belum Punya Akun? Daftar <g:link controller="profilKeminatanMahasiswa" action="Create">Disini</g:link></p>
+		<p>Powered By <strong>Fisika ICT</strong></p>
 		</div>
 	</div>
 

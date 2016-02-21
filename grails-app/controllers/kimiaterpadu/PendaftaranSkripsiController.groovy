@@ -101,4 +101,7 @@ class PendaftaranSkripsiController {
             '*'{ render status: NOT_FOUND }
         }
     }
+    def profil(){
+        
+    }
 }

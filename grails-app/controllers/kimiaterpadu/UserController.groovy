@@ -39,7 +39,7 @@ class UserController {
 		if (user) {
 			session.user = user.id
 			session.role = user.role
-			redirect(controller:'user')
+			redirect(uri: '/')
 		} else
 			redirect(controller:'user',action:'loginDosen')
 	}
