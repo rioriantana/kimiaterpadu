@@ -9,9 +9,10 @@ class ProfilKeminatanMahasiswa {
 	String metodePemilihanPembimbing
 	Pembimbing dosenPembimbing
 	String keminatan
-	String sksPeroleh
-	String sksSemesterIni
+	Integer sksPeroleh
+	Integer sksSemesterIni
 	String password
+	String status
 	static constraints = {
 		nim(nullable: true)
 		nama(nullable: true)
@@ -24,6 +25,7 @@ class ProfilKeminatanMahasiswa {
 		sksPeroleh(nullable: true)
 		sksSemesterIni(nullable: true)
 		password(nullable: true)
+		status(nullable: true)
 	}
 	public String toString(){
     	"$nim - $nama"

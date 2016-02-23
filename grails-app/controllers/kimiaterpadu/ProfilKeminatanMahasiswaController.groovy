@@ -5,11 +5,11 @@ package kimiaterpadu
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 class ProfilKeminatanMahasiswaController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-    // def beforeInterceptor = [action:this.&checkUser, except: ['create', 'save']]
+     def beforeInterceptor = [action:this.&checkUser, except: ['create', 'save']]
      def checkUser() {
         if(!session.user) {
             // i.e. user not logged in
@@ -111,5 +111,11 @@ class ProfilKeminatanMahasiswaController {
     }
     def profil(ProfilKeminatanMahasiswa profilKeminatanMahasiswaInstance){
     respond profilKeminatanMahasiswaInstance
+    }
+    def setujui(){
+        def profilKeminatanMahasiswaInstance = ProfilKeminatanMahasiswa.get(params.id)
+        profilKeminatanMahasiswaInstance.status = "DISETUJUI"
+        profilKeminatanMahasiswaInstance.save flush:true
+        redirect (action:"index")
     }
 }

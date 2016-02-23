@@ -33,8 +33,9 @@
 						<g:sortableColumn property="dosenPembimbing" title="${message(code: 'profilKeminatanMahasiswa.dosenPembimbing.label', default: 'Dosen Pembimbing')}" />
 					
 						<g:sortableColumn property="keminatan" title="${message(code: 'profilKeminatanMahasiswa.keminatan.label', default: 'Keminatan')}" />
-						
+						<g:if test="${session.role != 'MAHASISWA'}">
 						<g:sortableColumn property="email" title="${message(code: 'profilKeminatanMahasiswa.email.label', default: 'Action')}" />
+						</g:if>
 					</tr>
 				</thead>
 				<tbody>
@@ -50,8 +51,15 @@
 						<td>${fieldValue(bean: profilKeminatanMahasiswaInstance, field: "dosenPembimbing")}</td>
 					
 						<td>${fieldValue(bean: profilKeminatanMahasiswaInstance, field: "keminatan")}</td>
-
-						<td><g:link>Setujui | Edit</g:link></td>
+						<g:if test="${session.role != 'MAHASISWA'}">
+						<td>
+						<g:if test="${!profilKeminatanMahasiswaInstance.status}">
+						<g:link action="setujui" id="${profilKeminatanMahasiswaInstance.id}">Setujui</g:link>
+						</g:if>
+						<g:if test="${session.role == 'KOMISI SKRIPSI'}"> | <g:link action="edit" id="${profilKeminatanMahasiswaInstance.id}">Edit</g:link>
+						</g:if>
+						</td>
+						</g:if>
 					</tr>
 				</g:each>
 				</tbody>

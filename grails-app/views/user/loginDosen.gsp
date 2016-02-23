@@ -49,7 +49,7 @@
 
 			<h2>Login</h2>
 
-	<g:form action="doLogin">
+	<g:form action="doLoginDosen">
 			<div id="username_input">
 
 				<div id="username_inputleft"></div>
