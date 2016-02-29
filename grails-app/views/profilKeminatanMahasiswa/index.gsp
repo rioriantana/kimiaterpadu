@@ -36,6 +36,8 @@
 
 						<g:sortableColumn property="tanggalUpdate" title="${message(code: 'profilKeminatanMahasiswa.tanggalUpdate.label', default: 'Tanggal Update')}" />
 
+						<g:sortableColumn property="status" title="${message(code: 'profilKeminatanMahasiswa.status.label', default: 'Status')}" />
+
 						<g:if test="${session.role != 'MAHASISWA'}">
 						<g:sortableColumn property="email" title="${message(code: 'profilKeminatanMahasiswa.email.label', default: 'Action')}" />
 						</g:if>
@@ -56,6 +58,8 @@
 						<td>${fieldValue(bean: profilKeminatanMahasiswaInstance, field: "keminatan")}</td>
 
 						<td>${fieldValue(bean: profilKeminatanMahasiswaInstance, field: "tanggalUpdate")}</td>
+
+						<td>${fieldValue(bean: profilKeminatanMahasiswaInstance, field: "status")}</td>
 
 						<g:if test="${session.role != 'MAHASISWA'}">
 						<td>
