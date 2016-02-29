@@ -29,6 +29,7 @@ class ProfilKeminatanMahasiswaController {
 
     def create() {
         respond new ProfilKeminatanMahasiswa(params)
+       // def pembimbingInstance = Pembimbing.list().createCriteria()
     }
 
     @Transactional
@@ -42,7 +43,7 @@ class ProfilKeminatanMahasiswaController {
             respond profilKeminatanMahasiswaInstance.errors, view:'create'
             return
         }
-
+        profilKeminatanMahasiswaInstance.tanggalUpdate = new Date()
         profilKeminatanMahasiswaInstance.save flush:true
 
         request.withFormat {
@@ -114,8 +115,18 @@ class ProfilKeminatanMahasiswaController {
     }
     def setujui(){
         def profilKeminatanMahasiswaInstance = ProfilKeminatanMahasiswa.get(params.id)
+        def pembimbingInstance = profilKeminatanMahasiswaInstance.dosenPembimbing
+        if(pembimbingInstance.kuota < 1){
+            flash.message = "Maaf kuota pembimbing sudah penuh, mohon pilih pembimbing lain."
+            redirect(action: "index")
+            return
+        }
+        else{
         profilKeminatanMahasiswaInstance.status = "DISETUJUI"
         profilKeminatanMahasiswaInstance.save flush:true
+        pembimbingInstance.kuota = pembimbingInstance.kuota - 1
+        pembimbingInstance.save flush:true
+        }
         redirect (action:"index")
     }
 }

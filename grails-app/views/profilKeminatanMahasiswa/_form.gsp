@@ -47,6 +47,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: profilKeminatanMahasiswaInstance, field: 'nomorTelepon', 'error')} ">
+	<label for="nomorTelepon">
+		<g:message code="profilKeminatanMahasiswa.nomorTelepon.label" default="Nomor Telepon" />
+		
+	</label>
+	<g:textField name="nomorTelepon" value="${profilKeminatanMahasiswaInstance?.nomorTelepon}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: profilKeminatanMahasiswaInstance, field: 'metodePemilihanPembimbing', 'error')} ">
 	<label for="metodePemilihanPembimbing">
 		<g:message code="profilKeminatanMahasiswa.metodePemilihanPembimbing.label" default="Metode Pemilihan Pembimbing" />

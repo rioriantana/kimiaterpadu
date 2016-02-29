@@ -7,7 +7,7 @@ class Pembimbing {
 	String email
 	String alamat
 	String jenisKelamin
-	String kuota
+	Integer kuota
 	String role
 	String kodeAkses
 	String password
