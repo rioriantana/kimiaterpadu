@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<%
+def user = session.user;
+	def role = session.role;
+%>
 <html>
 	<head>
 		<meta name="layout" content="main"/>
@@ -110,10 +114,27 @@
 			<div id="controller-list" role="navigation">
 				<h2>Available Controllers:</h2>
 				<ul>
+				<g:if test="${!user}">
 				<li><g:link controller="mahasiswa" class="list" > Isi Biodata Mahasiswa Baru</g:link></li>
 				<li><g:link controller="mahasiswaWisuda" class="list" >Isi Biodata Mahasiswa Wisuda</g:link></li>
 				<li><g:link controller="profilKeminatanMahasiswa" class="list" action="create" >Pendaftaran Keminatan (untuk mahasiswa >= 110 SKS )</g:link></li>
-				<li><g:if test="${!session.user}"><g:link controller="user" action="login" class="list" >Login</g:link></g:if><g:else><g:link controller="user" action="logout" class="list" >Logout</g:link></g:else></li>
+				<li><g:link controller="user" action="login" class="list" >Login</g:link></li>
+				</g:if>
+				<g:else>
+				<g:if test="${role == 'MAHASISWA'}">
+					
+				</g:if>
+				<g:elseif test="${role == 'DOSEN'}">
+					
+				</g:elseif>
+				<g:elseif test="${role == 'KOMISI SKRIPSI'}">
+					
+				</g:elseif>
+				<g:elseif test="${role == 'ADMIN'}">
+					
+				</g:elseif>
+				<li><g:link controller="user" action="logout" class="list" >Logout</g:link></li>
+				</g:else>
 				</ul>
 			</div>
 		</div>
