@@ -43,6 +43,12 @@ class ProfilKeminatanMahasiswaController {
             respond profilKeminatanMahasiswaInstance.errors, view:'create'
             return
         }
+        Integer jumlahSks = params.sksPeroleh.toInteger() + params.sksSemesterIni.toInteger()
+        if (jumlahSks < 110){
+           flash.message = "Maaf Syarat SKS Minimal Belum Terpenuhi."
+                redirect (url:'/')
+                return []
+        }
         profilKeminatanMahasiswaInstance.tanggalUpdate = new Date()
         profilKeminatanMahasiswaInstance.save flush:true
 
@@ -128,5 +134,9 @@ class ProfilKeminatanMahasiswaController {
         pembimbingInstance.save flush:true
         }
         redirect (action:"index")
+    }
+    def profilKu(){
+        def profilKu = ProfilKeminatanMahasiswa.get(session.user)
+        [profilKeminatanMahasiswaInstance: profilKu]
     }
 }
