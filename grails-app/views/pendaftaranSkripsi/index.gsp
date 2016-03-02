@@ -35,6 +35,10 @@
 						<g:sortableColumn property="email" title="${message(code: 'pendaftaranSkripsi.email.label', default: 'Email')}" />
 					
 						<g:sortableColumn property="tanggalSeminarProposal" title="${message(code: 'pendaftaranSkripsi.tanggalSeminarProposal.label', default: 'Tanggal Seminar Proposal')}" />
+
+						<g:if test="${session.role != 'MAHASISWA'}">
+						<g:sortableColumn property="email" title="${message(code: 'profilKeminatanMahasiswa.email.label', default: 'Action')}" />
+						</g:if>
 					
 					</tr>
 				</thead>
@@ -42,7 +46,7 @@
 				<g:each in="${pendaftaranSkripsiInstanceList}" status="i" var="pendaftaranSkripsiInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${pendaftaranSkripsiInstance.id}">${fieldValue(bean: pendaftaranSkripsiInstance, field: "namaNIM")}</g:link></td>
+						<td>${fieldValue(bean: pendaftaranSkripsiInstance, field: "namaNIM")}</td>
 					
 						<td>${fieldValue(bean: pendaftaranSkripsiInstance, field: "pembimbing1")}</td>
 					
@@ -53,7 +57,16 @@
 						<td>${fieldValue(bean: pendaftaranSkripsiInstance, field: "email")}</td>
 					
 						<td><g:formatDate date="${pendaftaranSkripsiInstance.tanggalSeminarProposal}" /></td>
-					
+						
+						<g:if test="${session.role != 'MAHASISWA'}">
+						<td>
+						<g:if test="${!pendaftaranSkripsiInstance.status}">
+						<g:link action="setujui" id="${pendaftaranSkripsiInstance.id}">Setujui</g:link>
+						<g:if test="${session.role == 'KOMISI SKRIPSI'}"> | <g:link action="edit" id="${pendaftaranSkripsiInstance.id}">Edit</g:link>
+						</g:if>
+						</g:if>
+						</td>
+						</g:if>
 					</tr>
 				</g:each>
 				</tbody>

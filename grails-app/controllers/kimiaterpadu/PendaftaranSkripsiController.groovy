@@ -5,7 +5,7 @@ package kimiaterpadu
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 class PendaftaranSkripsiController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -20,7 +20,9 @@ class PendaftaranSkripsiController {
     }
 
     def create() {
+        def profilMahasiswa = ProfilKeminatanMahasiswa.get(params.id)
         respond new PendaftaranSkripsi(params)
+        [profilMahasiswa: profilMahasiswa]
     }
 
     @Transactional
@@ -40,7 +42,7 @@ class PendaftaranSkripsiController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'pendaftaranSkripsi.label', default: 'PendaftaranSkripsi'), pendaftaranSkripsiInstance.id])
-                redirect pendaftaranSkripsiInstance
+                redirect (action: "profil", id: pendaftaranSkripsiInstance.id)
             }
             '*' { respond pendaftaranSkripsiInstance, [status: CREATED] }
         }
@@ -67,7 +69,7 @@ class PendaftaranSkripsiController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'PendaftaranSkripsi.label', default: 'PendaftaranSkripsi'), pendaftaranSkripsiInstance.id])
-                redirect pendaftaranSkripsiInstance
+                redirect (action: "profil", id: pendaftaranSkripsiInstance.id)
             }
             '*'{ respond pendaftaranSkripsiInstance, [status: OK] }
         }
@@ -101,7 +103,20 @@ class PendaftaranSkripsiController {
             '*'{ render status: NOT_FOUND }
         }
     }
-    def profil(){
-        
+    def profil() {
+        def profilMahasiswa = ProfilKeminatanMahasiswa.get(params.id)
+        def pendaftaranSkripsiInstance = PendaftaranSkripsi.findByNamaNIM(profilMahasiswa, params)
+        if(!pendaftaranSkripsiInstance){
+            flash.message = "Anda belum mendaftar skripsi, isi form pendaftaran berikut."
+            redirect (action: "create", id: params.id)
+        }
+        [pendaftaranSkripsiInstance: pendaftaranSkripsiInstance]
+    }
+    def setujui(){
+        def pendaftaranSkripsiInstance = PendaftaranSkripsi.get(params.id)
+        pendaftaranSkripsiInstance.status = "DISETUJUI"
+        pendaftaranSkripsiInstance.save flush:true
+        flash.message = "Pengajuan Skripsi Telah Disetujui"
+        redirect (action:"index")
     }
 }

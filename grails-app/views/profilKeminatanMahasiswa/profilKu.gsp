@@ -65,15 +65,6 @@
 					
 				</li>
 				</g:if>
-
-				<g:if test="${profilKeminatanMahasiswaInstance?.nomorTelepon}">
-				<li class="fieldcontain">
-					<span id="nomorTelepon-label" class="property-label"><g:message code="profilKeminatanMahasiswa.nomorTelepon.label" default="Nomor Telepon" /></span>
-					
-						<span class="property-value" aria-labelledby="nomorTelepon-label"><g:fieldValue bean="${profilKeminatanMahasiswaInstance}" field="nomorTelepon"/></span>
-					
-				</li>
-				</g:if>
 			
 				<g:if test="${profilKeminatanMahasiswaInstance?.metodePemilihanPembimbing}">
 				<li class="fieldcontain">
@@ -125,15 +116,6 @@
 					<span id="password-label" class="property-label"><g:message code="profilKeminatanMahasiswa.password.label" default="Password" /></span>
 					
 						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${profilKeminatanMahasiswaInstance}" field="password"/></span>
-					
-				</li>
-				</g:if>
-
-				<g:if test="${profilKeminatanMahasiswaInstance?.status}">
-				<li class="fieldcontain">
-					<span id="status-label" class="property-label"><g:message code="profilKeminatanMahasiswa.status.label" default="Status Persetujuan" /></span>
-					
-						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${profilKeminatanMahasiswaInstance}" field="status"/></span>
 					
 				</li>
 				</g:if>

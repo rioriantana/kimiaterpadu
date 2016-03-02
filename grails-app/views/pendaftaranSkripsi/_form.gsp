@@ -74,12 +74,3 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'status', 'error')} ">
-	<label for="status">
-		<g:message code="pendaftaranSkripsi.status.label" default="Status" />
-		
-	</label>
-	<g:textField name="status" value="${pendaftaranSkripsiInstance?.status}"/>
-
-</div>
-
