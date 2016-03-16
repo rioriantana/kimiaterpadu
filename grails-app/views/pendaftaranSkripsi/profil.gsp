@@ -25,7 +25,7 @@
 				<li class="fieldcontain">
 					<span id="namaNIM-label" class="property-label"><g:message code="pendaftaranSkripsi.namaNIM.label" default="Nama NIM" /></span>
 					
-						<span class="property-value" aria-labelledby="namaNIM-label"><g:link controller="profilKeminatanMahasiswa" action="show" id="${pendaftaranSkripsiInstance?.namaNIM?.id}">${pendaftaranSkripsiInstance?.namaNIM?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="namaNIM-label"><g:link controller="profilKeminatanMahasiswa" action="profil" id="${pendaftaranSkripsiInstance?.namaNIM?.id}">${pendaftaranSkripsiInstance?.namaNIM?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -34,7 +34,7 @@
 				<li class="fieldcontain">
 					<span id="pembimbing1-label" class="property-label"><g:message code="pendaftaranSkripsi.pembimbing1.label" default="Pembimbing1" /></span>
 					
-						<span class="property-value" aria-labelledby="pembimbing1-label"><g:link controller="pembimbing" action="show" id="${pendaftaranSkripsiInstance?.pembimbing1?.id}">${pendaftaranSkripsiInstance?.pembimbing1?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="pembimbing1-label">${pendaftaranSkripsiInstance?.pembimbing1?.encodeAsHTML()}</span>
 					
 				</li>
 				</g:if>
@@ -43,7 +43,7 @@
 				<li class="fieldcontain">
 					<span id="pembimbing2-label" class="property-label"><g:message code="pendaftaranSkripsi.pembimbing2.label" default="Pembimbing2" /></span>
 					
-						<span class="property-value" aria-labelledby="pembimbing2-label"><g:link controller="pembimbing" action="show" id="${pendaftaranSkripsiInstance?.pembimbing2?.id}">${pendaftaranSkripsiInstance?.pembimbing2?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="pembimbing2-label">${pendaftaranSkripsiInstance?.pembimbing2?.encodeAsHTML()}</span>
 					
 				</li>
 				</g:if>

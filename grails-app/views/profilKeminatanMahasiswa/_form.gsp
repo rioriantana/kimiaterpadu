@@ -61,8 +61,12 @@
 		<g:message code="profilKeminatanMahasiswa.metodePemilihanPembimbing.label" default="Metode Pemilihan Pembimbing" />
 		
 	</label>
+	<g:if test="${profilKeminatanMahasiswaInstance.status}">
+		${profilKeminatanMahasiswaInstance.metodePemilihanPembimbing}
+	</g:if>
+	<g:else>
 	<g:select name="metodePemilihanPembimbing" from="${profilKeminatanMahasiswaInstance.constraints.metodePemilihanPembimbing.inList}" value="${profilKeminatanMahasiswaInstance?.metodePemilihanPembimbing}" valueMessagePrefix="profilKeminatanMahasiswa.metodePemilihanPembimbing" noSelection="['': '']"/>
-
+	</g:else>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: profilKeminatanMahasiswaInstance, field: 'dosenPembimbing', 'error')} ">
@@ -70,7 +74,12 @@
 		<g:message code="profilKeminatanMahasiswa.dosenPembimbing.label" default="Dosen Pembimbing" />
 		
 	</label>
+	<g:if test="${profilKeminatanMahasiswaInstance.status}">
+		${profilKeminatanMahasiswaInstance.dosenPembimbing}
+	</g:if>
+	<g:else>
 	<g:select id="dosenPembimbing" name="dosenPembimbing.id" from="${kimiaterpadu.Pembimbing.list()}" optionKey="id" value="${profilKeminatanMahasiswaInstance?.dosenPembimbing?.id}" class="many-to-one" noSelection="['null': '']"/>
+	</g:else>
 
 </div>
 
@@ -79,7 +88,12 @@
 		<g:message code="profilKeminatanMahasiswa.keminatan.label" default="Keminatan" />
 		
 	</label>
+	<g:if test="${profilKeminatanMahasiswaInstance.status}">
+		${profilKeminatanMahasiswaInstance.keminatan}
+	</g:if>
+	<g:else>
 	<g:select name="keminatan" from="${profilKeminatanMahasiswaInstance.constraints.keminatan.inList}" value="${profilKeminatanMahasiswaInstance?.keminatan}" valueMessagePrefix="profilKeminatanMahasiswa.keminatan" noSelection="['': '']"/>
+	</g:else>
 
 </div>
 

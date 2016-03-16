@@ -43,6 +43,12 @@ class ProfilKeminatanMahasiswaController {
             respond profilKeminatanMahasiswaInstance.errors, view:'create'
             return
         }
+        def profilAda = ProfilKeminatanMahasiswa.findByNim(params.nim)
+        if(profilAda){
+            flash.message = "Maaf NIM Sudah Digunakan."
+                redirect (url:'/')
+                return []
+        }
         Integer jumlahSks = params.sksPeroleh.toInteger() + params.sksSemesterIni.toInteger()
         if (jumlahSks < 110){
            flash.message = "Maaf Syarat SKS Minimal Belum Terpenuhi."

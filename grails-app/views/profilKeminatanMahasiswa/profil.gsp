@@ -88,7 +88,7 @@
 				<li class="fieldcontain">
 					<span id="dosenPembimbing-label" class="property-label"><g:message code="profilKeminatanMahasiswa.dosenPembimbing.label" default="Dosen Pembimbing" /></span>
 					
-						<span class="property-value" aria-labelledby="dosenPembimbing-label"><g:link controller="pembimbing" action="show" id="${profilKeminatanMahasiswaInstance?.dosenPembimbing?.id}">${profilKeminatanMahasiswaInstance?.dosenPembimbing?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="dosenPembimbing-label">${profilKeminatanMahasiswaInstance?.dosenPembimbing?.encodeAsHTML()}</span>
 					
 				</li>
 				</g:if>

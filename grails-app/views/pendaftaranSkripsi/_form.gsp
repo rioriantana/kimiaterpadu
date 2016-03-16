@@ -1,4 +1,4 @@
-<%@ page import="kimiaterpadu.PendaftaranSkripsi" %>
+ <%@ page import="kimiaterpadu.PendaftaranSkripsi" %>
 
 
 
@@ -7,7 +7,7 @@
 		<g:message code="pendaftaranSkripsi.namaNIM.label" default="Nama NIM" />
 		
 	</label>
-	<g:select id="namaNIM" name="namaNIM.id" from="${kimiaterpadu.ProfilKeminatanMahasiswa.list()}" optionKey="id" value="${pendaftaranSkripsiInstance?.namaNIM?.id}" class="many-to-one" noSelection="['null': '']"/>
+	${pendaftaranSkripsiInstance.namaNIM}
 
 </div>
 
@@ -16,8 +16,12 @@
 		<g:message code="pendaftaranSkripsi.pembimbing1.label" default="Pembimbing1" />
 		
 	</label>
+	<g:if test="${pendaftaranSkripsiInstance.status}">
+		${pendaftaranSkripsiInstance.pembimbing1}
+	</g:if>
+	<g:else>
 	<g:select id="pembimbing1" name="pembimbing1.id" from="${kimiaterpadu.Pembimbing.list()}" optionKey="id" value="${pendaftaranSkripsiInstance?.pembimbing1?.id}" class="many-to-one" noSelection="['null': '']"/>
-
+	</g:else>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'pembimbing2', 'error')} ">
@@ -25,8 +29,12 @@
 		<g:message code="pendaftaranSkripsi.pembimbing2.label" default="Pembimbing2" />
 		
 	</label>
+	<g:if test="${pendaftaranSkripsiInstance.status}">
+		${pendaftaranSkripsiInstance.pembimbing2}
+	</g:if>
+	<g:else>
 	<g:select id="pembimbing2" name="pembimbing2.id" from="${kimiaterpadu.Pembimbing.list()}" optionKey="id" value="${pendaftaranSkripsiInstance?.pembimbing2?.id}" class="many-to-one" noSelection="['null': '']"/>
-
+	</g:else>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'judulSkripsi', 'error')} ">
