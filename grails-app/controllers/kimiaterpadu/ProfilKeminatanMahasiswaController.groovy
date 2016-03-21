@@ -29,7 +29,6 @@ class ProfilKeminatanMahasiswaController {
 
     def create() {
         respond new ProfilKeminatanMahasiswa(params)
-       // def pembimbingInstance = Pembimbing.list().createCriteria()
     }
 
     @Transactional

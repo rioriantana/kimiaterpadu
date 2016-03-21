@@ -1,3 +1,4 @@
+<%@ page import="org.grails.plugins.google.visualization.formatter.BarFormatter" %>
 <!DOCTYPE html>
 <%
 def user = session.user;
@@ -7,6 +8,7 @@ def user = session.user;
 	<head>
 		<meta name="layout" content="main"/>
 		<title>Kimia Terpadu</title>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>	
 		<style type="text/css" media="screen">
 			#status {
 				background-color: #eee;
@@ -87,36 +89,12 @@ def user = session.user;
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
-			<h1>Application Status</h1>
-			<ul>
-				<li>App version: <g:meta name="app.version"/></li>
-				<li>Grails version: <g:meta name="app.grails.version"/></li>
-				<li>Groovy version: ${GroovySystem.getVersion()}</li>
-				<li>JVM version: ${System.getProperty('java.version')}</li>
-				<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
-				<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-				<li>Domains: ${grailsApplication.domainClasses.size()}</li>
-				<li>Services: ${grailsApplication.serviceClasses.size()}</li>
-				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-			</ul>
+			<h1>Available Controllers:</h1>
 			
-		</div>
-		<div id="page-body" role="main">
-		<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<h1>Selamat Datang di Sistem Informasi Kimia Terpadu</h1>
-			<p>Congratulations, you have successfully started your first Grails application! At the moment
-			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
-			   content you may choose. Below is a list of controllers that are currently deployed in this application,
-			   click on each to execute its default action:</p>
-
-			<div id="controller-list" role="navigation">
-				<h2>Available Controllers:</h2>
 				<ul>
 				<g:if test="${!user}">
-				<li><g:link controller="mahasiswa" class="list" > Isi Biodata Mahasiswa Baru</g:link></li>
-				<li><g:link controller="mahasiswaWisuda" class="list" >Isi Biodata Mahasiswa Wisuda</g:link></li>
+				<li><g:link controller="mahasiswa" action="create" class="list" > Isi Biodata Mahasiswa Baru</g:link></li>
+				<li><g:link controller="mahasiswaWisuda" action="create" class="list" >Isi Biodata Mahasiswa Wisuda</g:link></li>
 				<li><g:link controller="profilKeminatanMahasiswa" class="list" action="create" >Pendaftaran Keminatan (untuk mahasiswa >= 110 SKS )</g:link></li>
 				<li><g:link controller="user" action="login" class="list" >Login</g:link></li>
 				</g:if>
@@ -138,6 +116,31 @@ def user = session.user;
 				<li><g:link controller="user" action="logout" class="list" >Logout</g:link></li>
 				</g:else>
 				</ul>
+			
+		</div>
+		<div id="page-body" role="main">
+		<g:if test="${flash.message}">
+			<div class="message" role="status">${flash.message}</div>
+			</g:if>
+			<h1>Selamat Datang di Sistem Informasi Kimia Terpadu</h1>
+			<p>Congratulations, you have successfully started your first Grails application! At the moment
+			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
+			   content you may choose. Below is a list of controllers that are currently deployed in this application,
+			   click on each to execute its default action:</p>
+<div id="barchart">
+
+			<div id="controller-list" role="navigation">
+			
+					<%
+
+		def defineDataTypeOfVariables = [['string', 'Task'], ['number', 'Pengabdian Masyarakat'], ['number', 'Jurnal'], ['number', 'Penelitian'], ['number', 'Prosiding']]
+		def salesExpenses = [ ['2012', '100', '60', '200', '65'],['2013', '80', '50', '85', '59'],['2014', '125', '90', '112', '91'],['2015', '155', '120', '130', '95']]
+		def judulJurnal = [['string', 'Task'], ['number', 'Persentase']]
+		def dataDosenJurnal = [['Iwan Yahya', 30],['Nuryani', 24],['Suparmi',15],['Ahmad Marzuki', 21]]
+       
+%>
+<gvisualization:columnCoreChart elementId="barchart"   hAxis= "${new Expando([slantedTextAngle:'180',textStyle:new Expando(color:'black', fontName:'Arial', fontSize:14)])}"  bar= "${new Expando(groupWidth:'40%')}" chartArea="${new Expando(top:70, width:'100%' , height:'60%', left:50,bottom:150)}" title="Company Performance"  titleTextStyle="${ new Expando([color:'black', fontName:'Arial', fontSize:14])}" width="${700}" height="${400}" columns="${defineDataTypeOfVariables}" data="${salesExpenses}" />
+			</div>
 			</div>
 		</div>
 	</body>

@@ -25,7 +25,7 @@
 		<g:message code="profilKeminatanMahasiswa.jenisKelamin.label" default="Jenis Kelamin" />
 		
 	</label>
-	<g:select name="jenisKelamin" from="${profilKeminatanMahasiswaInstance.constraints.jenisKelamin.inList}" value="${profilKeminatanMahasiswaInstance?.jenisKelamin}" valueMessagePrefix="profilKeminatanMahasiswa.jenisKelamin" noSelection="['': '']"/>
+	<g:select name="jenisKelamin" from="${profilKeminatanMahasiswaInstance.constraints.jenisKelamin.inList}" value="${profilKeminatanMahasiswaInstance?.jenisKelamin}" valueMessagePrefix="profilKeminatanMahasiswa.jenisKelamin" />
 
 </div>
 
@@ -65,7 +65,7 @@
 		${profilKeminatanMahasiswaInstance.metodePemilihanPembimbing}
 	</g:if>
 	<g:else>
-	<g:select name="metodePemilihanPembimbing" from="${profilKeminatanMahasiswaInstance.constraints.metodePemilihanPembimbing.inList}" value="${profilKeminatanMahasiswaInstance?.metodePemilihanPembimbing}" valueMessagePrefix="profilKeminatanMahasiswa.metodePemilihanPembimbing" noSelection="['': '']"/>
+	<g:select id="mySelect" onchange="myFunction()" name="metodePemilihanPembimbing" from="${profilKeminatanMahasiswaInstance.constraints.metodePemilihanPembimbing.inList}" value="${profilKeminatanMahasiswaInstance?.metodePemilihanPembimbing}" valueMessagePrefix="profilKeminatanMahasiswa.metodePemilihanPembimbing"/>
 	</g:else>
 </div>
 
@@ -78,7 +78,7 @@
 		${profilKeminatanMahasiswaInstance.dosenPembimbing}
 	</g:if>
 	<g:else>
-	<g:select id="dosenPembimbing" name="dosenPembimbing.id" from="${kimiaterpadu.Pembimbing.list()}" optionKey="id" value="${profilKeminatanMahasiswaInstance?.dosenPembimbing?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="dosenPembimbing" name="dosenPembimbing.id" from="${kimiaterpadu.Pembimbing.findAllByRoleAndKuotaBetween('DOSEN', 1, 8)}" optionKey="id" value="${profilKeminatanMahasiswaInstance?.dosenPembimbing?.id}" class="many-to-one" noSelection="['': '']"/>
 	</g:else>
 
 </div>
@@ -92,7 +92,7 @@
 		${profilKeminatanMahasiswaInstance.keminatan}
 	</g:if>
 	<g:else>
-	<g:select name="keminatan" from="${profilKeminatanMahasiswaInstance.constraints.keminatan.inList}" value="${profilKeminatanMahasiswaInstance?.keminatan}" valueMessagePrefix="profilKeminatanMahasiswa.keminatan" noSelection="['': '']"/>
+	<g:select disabled="true" id="keminatan" name="keminatan" from="${profilKeminatanMahasiswaInstance.constraints.keminatan.inList}" value="${profilKeminatanMahasiswaInstance?.keminatan}" valueMessagePrefix="profilKeminatanMahasiswa.keminatan" noSelection="['': '']"/>
 	</g:else>
 
 </div>
@@ -124,3 +124,18 @@
 
 </div>
 
+<script>
+function myFunction() {
+    var x = document.getElementById("mySelect").value;
+    if (x == "Pilih Dosen") {
+    	document.getElementById('keminatan').disabled = true;
+    	document.getElementById('keminatan').value = "";
+    	document.getElementById('dosenPembimbing').disabled = false;
+    }
+    else{
+    	document.getElementById('dosenPembimbing').disabled = true;
+    	document.getElementById('dosenPembimbing').value = "";
+    	document.getElementById('keminatan').disabled = false;
+    }
+}
+</script>
