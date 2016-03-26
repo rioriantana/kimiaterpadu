@@ -20,7 +20,18 @@ class ProfilKeminatanMahasiswaController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond ProfilKeminatanMahasiswa.list(params), model:[profilKeminatanMahasiswaInstanceCount: ProfilKeminatanMahasiswa.count()]
+        def list = []
+        def count = []
+        def dosen = Pembimbing.get(session.user)
+        if(session.role == "KAPRODI" || session.role == "KOMISI SKRIPSI"){
+            list = ProfilKeminatanMahasiswa.list(params)
+            count = ProfilKeminatanMahasiswa.count()
+        }
+        else{
+            list = ProfilKeminatanMahasiswa.findAllByDosenPembimbing(dosen, params)
+            count = ProfilKeminatanMahasiswa.countByDosenPembimbing(dosen, params)
+        }
+        [profilKeminatanMahasiswaInstanceList: list, profilKeminatanMahasiswaInstanceCount: count]
     }
 
     def show(ProfilKeminatanMahasiswa profilKeminatanMahasiswaInstance) {

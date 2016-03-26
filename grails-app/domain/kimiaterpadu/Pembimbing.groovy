@@ -20,7 +20,7 @@ class Pembimbing {
 		jenisKelamin(nullable: true, inList: ['Laki-Laki', 'Perempuan'])
 		kuota(nullable:true)
 		kodeAkses(nullable: true)
-		role(nullable:true, inList: ['ADMIN', 'DOSEN', 'KAPRODI', 'KOMISI SKRIPSI'])
+		role(nullable:true , inList: ['ADMIN', 'DOSEN', 'KAPRODI', 'KOMISI SKRIPSI'])
 		password(nullable:false)
     }
     
