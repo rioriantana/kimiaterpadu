@@ -13,7 +13,7 @@ def user = session.user;
 			#status {
 				background-color: #eee;
 				border: .2em solid #fff;
-				margin: 2em 2em 1em;
+				margin: 2em 1em 1em;
 				padding: 1em;
 				width: 12em;
 				float: left;
@@ -85,6 +85,7 @@ def user = session.user;
 				}
 			}
 		</style>
+		
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -96,7 +97,6 @@ def user = session.user;
 				<li><g:link controller="mahasiswa" action="create" class="list" > Isi Biodata Mahasiswa Baru</g:link></li>
 				<li><g:link controller="mahasiswaWisuda" action="create" class="list" >Isi Biodata Mahasiswa Wisuda</g:link></li>
 				<li><g:link controller="profilKeminatanMahasiswa" class="list" action="create" >Pendaftaran Keminatan (untuk mahasiswa >= 110 SKS )</g:link></li>
-				<li><g:link controller="rekap" action="kuotaDosen" class="list" >Cek Kuota Bimbingan Dosen</g:link></li>
 				<li><g:link controller="user" action="login" class="list" >Login</g:link></li>
 				</g:if>
 				<g:else>
@@ -133,24 +133,40 @@ def user = session.user;
 		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<h1>Selamat Datang di Sistem Informasi Kimia Terpadu</h1>
-			<p>Congratulations, you have successfully started your first Grails application! At the moment
-			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
-			   content you may choose. Below is a list of controllers that are currently deployed in this application,
-			   click on each to execute its default action:</p>
-<div id="barchart">
-
-			<div id="controller-list" role="navigation">
-			
-					<%
-
-		def defineDataTypeOfVariables = [['string', 'Task'], ['number', 'Pengabdian Masyarakat'], ['number', 'Jurnal'], ['number', 'Penelitian'], ['number', 'Prosiding']]
-		def salesExpenses = [ ['2012', '100', '60', '200', '65'],['2013', '80', '50', '85', '59'],['2014', '125', '90', '112', '91'],['2015', '155', '120', '130', '95']]
-		def judulJurnal = [['string', 'Task'], ['number', 'Persentase']]
-		def dataDosenJurnal = [['Iwan Yahya', 30],['Nuryani', 24],['Suparmi',15],['Ahmad Marzuki', 21]]
-       
-%>
-<gvisualization:columnCoreChart elementId="barchart"   hAxis= "${new Expando([slantedTextAngle:'180',textStyle:new Expando(color:'black', fontName:'Arial', fontSize:14)])}"  bar= "${new Expando(groupWidth:'40%')}" chartArea="${new Expando(top:70, width:'100%' , height:'60%', left:50,bottom:150)}" title="Penelitian dan Karya Ilmiah Prodi Kimia"  titleTextStyle="${ new Expando([color:'black', fontName:'Arial', fontSize:14])}" width="${700}" height="${400}" columns="${defineDataTypeOfVariables}" data="${salesExpenses}" />
+			<h1>Daftar Ketersediaan Bimbingan Dosen</h1>
+			<table>
+			<thead>
+					<tr>
+						<g:sortableColumn property="nip" title="${message(code: 'pembimbing.nip.label', default: 'Nip')}" />
+					
+						<g:sortableColumn property="nama" title="${message(code: 'pembimbing.nama.label', default: 'Nama')}" />
+					
+						<g:sortableColumn property="email" title="${message(code: 'pembimbing.email.label', default: 'Email')}" />
+					
+						<g:sortableColumn property="alamat" title="${message(code: 'pembimbing.alamat.label', default: 'Alamat')}" />
+					
+						<g:sortableColumn property="kuota" title="${message(code: 'pembimbing.kuota.label', default: 'Kuota Sisa')}" />
+					
+					</tr>
+				</thead>
+				<tbody>
+				<g:each in="${pembimbingInstanceList}" status="i" var="pembimbingInstance">
+					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					
+						<td>${fieldValue(bean: pembimbingInstance, field: "nip")}</td>
+					
+						<td>${fieldValue(bean: pembimbingInstance, field: "nama")}</td>
+					
+						<td>${fieldValue(bean: pembimbingInstance, field: "email")}</td>
+					
+						<td>${fieldValue(bean: pembimbingInstance, field: "alamat")}</td>
+					
+						<td>${fieldValue(bean: pembimbingInstance, field: "kuota")}</td>
+					
+					</tr>
+				</g:each>
+				</tbody>
+			</table>
 			</div>
 			</div>
 		</div>

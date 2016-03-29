@@ -126,7 +126,7 @@
 				<li class="fieldcontain">
 					<span id="lamaSkripsi-label" class="property-label"><g:message code="mahasiswaWisuda.lamaSkripsi.label" default="Lama Skripsi" /></span>
 					
-						<span class="property-value" aria-labelledby="lamaSkripsi-label"><g:fieldValue bean="${mahasiswaWisudaInstance}" field="lamaSkripsi"/></span>
+						<span class="property-value" aria-labelledby="lamaSkripsi-label"><g:fieldValue bean="${mahasiswaWisudaInstance}" field="lamaSkripsi"/> Bulan</span>
 					
 				</li>
 				</g:if>
@@ -253,13 +253,6 @@
 					<span id="alamatOrangTua-label" class="property-label"><g:message code="mahasiswaWisuda.alamatOrangTua.label" default="Alamat Orang Tua" /></span>
 					
 						<span class="property-value" aria-labelledby="alamatOrangTua-label"><g:fieldValue bean="${mahasiswaWisudaInstance}" field="alamatOrangTua"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${mahasiswaWisudaInstance?.avatar}">
-				<li class="fieldcontain">
-					<span id="avatar-label" class="property-label"><g:message code="mahasiswaWisuda.avatar.label" default="Avatar" /></span>
 					
 				</li>
 				</g:if>

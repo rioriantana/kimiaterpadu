@@ -62,7 +62,7 @@
 		<g:message code="mahasiswaWisuda.pembimbing1.label" default="Pembimbing1" />
 		
 	</label>
-	<g:select id="pembimbing1" name="pembimbing1.id" from="${kimiaterpadu.Pembimbing.list()}" optionKey="id" value="${mahasiswaWisudaInstance?.pembimbing1?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="pembimbing1" name="pembimbing1.id" from="${kimiaterpadu.Pembimbing.findAllByRole('DOSEN')}" optionKey="id" value="${mahasiswaWisudaInstance?.pembimbing1?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 
@@ -71,7 +71,7 @@
 		<g:message code="mahasiswaWisuda.pembimbing2.label" default="Pembimbing2" />
 		
 	</label>
-	<g:select id="pembimbing2" name="pembimbing2.id" from="${kimiaterpadu.Pembimbing.list()}" optionKey="id" value="${mahasiswaWisudaInstance?.pembimbing2?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="pembimbing2" name="pembimbing2.id" from="${kimiaterpadu.Pembimbing.findAllByRole('DOSEN')}" optionKey="id" value="${mahasiswaWisudaInstance?.pembimbing2?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 
@@ -89,7 +89,7 @@
 		<g:message code="mahasiswaWisuda.lamaSkripsi.label" default="Lama Skripsi" />
 		
 	</label>
-	<g:textField name="lamaSkripsi" value="${mahasiswaWisudaInstance?.lamaSkripsi}"/>
+	<g:field type="number" name="lamaSkripsi" value="${mahasiswaWisudaInstance?.lamaSkripsi}"/> Bulan
 
 </div>
 
