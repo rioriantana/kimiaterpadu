@@ -23,7 +23,7 @@ class ProfilKeminatanMahasiswaController {
         def list = []
         def count = []
         def dosen = Pembimbing.get(session.user)
-        if(session.role == "KAPRODI" || session.role == "KOMISI SKRIPSI"){
+        if(session.role == "KAPRODI" || session.role == "KOMISI SKRIPSI" || session.role == "ADMIN"){
             list = ProfilKeminatanMahasiswa.list(params)
             count = ProfilKeminatanMahasiswa.count()
         }

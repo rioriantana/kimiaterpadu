@@ -64,8 +64,10 @@
 						<g:if test="${session.role != 'MAHASISWA'}">
 						<td>
 						<g:if test="${!profilKeminatanMahasiswaInstance.status}">
+						<g:if test="${session.role != 'ADMIN'}">
 						<g:link action="setujui" id="${profilKeminatanMahasiswaInstance.id}">Setujui</g:link>
-						<g:if test="${session.role == 'KOMISI SKRIPSI'}"> | <g:link action="edit" id="${profilKeminatanMahasiswaInstance.id}">Edit</g:link>
+						</g:if>
+						<g:if test="${session.role == 'KOMISI SKRIPSI' || session.role == 'ADMIN'}"> | <g:link action="edit" id="${profilKeminatanMahasiswaInstance.id}">Edit</g:link>
 						</g:if>
 						</g:if>
 						</td>

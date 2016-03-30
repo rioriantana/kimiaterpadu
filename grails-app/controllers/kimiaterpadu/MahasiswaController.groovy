@@ -19,6 +19,10 @@ class MahasiswaController {
         respond mahasiswaInstance
     }
 
+    def profil(Mahasiswa mahasiswaInstance) {
+        respond mahasiswaInstance
+    }
+
     def create() {
         respond new Mahasiswa(params)
     }
