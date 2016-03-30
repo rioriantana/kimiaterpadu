@@ -77,7 +77,7 @@ class MahasiswaWisudaController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'mahasiswaWisuda.label', default: 'MahasiswaWisuda'), mahasiswaWisudaInstance.id])
-                redirect mahasiswaWisudaInstance
+                redirect (action: "print", id: mahasiswaWisudaInstance.id)
             }
             '*' { respond mahasiswaWisudaInstance, [status: CREATED] }
         }

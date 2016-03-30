@@ -20,6 +20,12 @@ class PendaftaranSkripsiController {
     }
 
     def create() {
+        def mahasiswa = ProfilKeminatanMahasiswa.get(session.user)
+        if(!mahasiswa.status){
+            flash.message = "Maaf, keminatan anda belum disetujui."
+            redirect (url:'/')
+                return []
+        }
         def profilMahasiswa = ProfilKeminatanMahasiswa.get(params.id)
         respond new PendaftaranSkripsi(params)
         [profilMahasiswa: profilMahasiswa]
