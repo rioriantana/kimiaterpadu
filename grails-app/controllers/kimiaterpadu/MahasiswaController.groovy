@@ -19,6 +19,10 @@ class MahasiswaController {
         respond mahasiswaInstance
     }
 
+    def print(Mahasiswa mahasiswaInstance) {
+        respond mahasiswaInstance
+    }
+
     def profil(Mahasiswa mahasiswaInstance) {
         respond mahasiswaInstance
     }
@@ -44,7 +48,7 @@ class MahasiswaController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'mahasiswa.label', default: 'Mahasiswa'), mahasiswaInstance.id])
-                redirect mahasiswaInstance
+                redirect (action: "print", id: mahasiswaInstance.id)
             }
             '*' { respond mahasiswaInstance, [status: CREATED] }
         }

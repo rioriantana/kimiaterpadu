@@ -92,7 +92,7 @@ class ProfilKeminatanMahasiswaController {
             respond profilKeminatanMahasiswaInstance.errors, view:'edit'
             return
         }
-
+        profilKeminatanMahasiswaInstance.tanggalUpdate = new Date()
         profilKeminatanMahasiswaInstance.save flush:true
 
         request.withFormat {

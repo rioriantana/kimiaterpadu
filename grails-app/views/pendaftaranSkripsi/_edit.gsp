@@ -7,7 +7,8 @@
 		<g:message code="pendaftaranSkripsi.namaNIM.label" default="Nama NIM" />
 		
 	</label>
-	<g:textField name="namaNIM" value="${profilMahasiswa}" readonly="true"/>
+	${pendaftaranSkripsiInstance?.namaNIM}
+	<g:field type="hidden" name="namaNIM" value="${pendaftaranSkripsiInstance?.namaNIM?.id}" readonly="true"/>
 
 </div>
 

@@ -9,7 +9,15 @@ import grails.transaction.Transactional
 class PendaftaranSkripsiController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
+    def beforeInterceptor = [action:this.&checkUser, except: ['create', 'save']]
+     def checkUser() {
+        if(!session.user) {
+            // i.e. user not logged in
+            redirect(controller:'user', action:'login')
+            return false
+        }
+    }
+    
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond PendaftaranSkripsi.list(params), model:[pendaftaranSkripsiInstanceCount: PendaftaranSkripsi.count()]
@@ -26,9 +34,8 @@ class PendaftaranSkripsiController {
             redirect (url:'/')
                 return []
         }
-        def profilMahasiswa = ProfilKeminatanMahasiswa.get(params.id)
-        respond new PendaftaranSkripsi(params)
-        [profilMahasiswa: profilMahasiswa]
+        def pendaftaranSkripsiInstance = new PendaftaranSkripsi(params)
+        [profilMahasiswa: mahasiswa, pendaftaranSkripsiInstance: pendaftaranSkripsiInstance]
     }
 
     @Transactional
