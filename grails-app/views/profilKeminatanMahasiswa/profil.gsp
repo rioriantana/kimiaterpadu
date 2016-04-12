@@ -141,7 +141,7 @@
 			</ol>
 			<g:form url="[resource:profilKeminatanMahasiswaInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
-					<!-- <g:link class="edit" action="edit" resource="${profilKeminatanMahasiswaInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>  -->
+					<g:link class="edit" action="edit" resource="${profilKeminatanMahasiswaInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 				</fieldset>
 			</g:form>
 		</div>
