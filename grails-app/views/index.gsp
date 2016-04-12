@@ -89,7 +89,7 @@ def user = session.user;
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
-			<h1>Available Controllers:</h1>
+			<h1>Main Menu:</h1>
 			
 				<ul>
 				<g:if test="${!user}">
@@ -134,10 +134,7 @@ def user = session.user;
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<h1>Selamat Datang di Sistem Informasi Kimia Terpadu</h1>
-			<p>Congratulations, you have successfully started your first Grails application! At the moment
-			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
-			   content you may choose. Below is a list of controllers that are currently deployed in this application,
-			   click on each to execute its default action:</p>
+			<p>SIMADU (Sistem Informasi Kimia Terpadu) sengaja dirancang untuk menghimpun data diri, status keminatan, dan monitoring skripsi mahasiswa Program Studi Kimia FMIPA UNS. </p>
 <div id="barchart">
 
 			<div id="controller-list" role="navigation">

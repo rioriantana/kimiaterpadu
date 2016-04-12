@@ -12,7 +12,9 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<g:if test="${session.role != 'MAHASISWA' && session.role != 'DOSEN'}">
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				</g:if>
 			</ul>
 		</div>
 		<div id="list-profilKeminatanMahasiswa" class="content scaffold-list" role="main">
@@ -38,7 +40,7 @@
 
 						<g:sortableColumn property="status" title="${message(code: 'profilKeminatanMahasiswa.status.label', default: 'Status')}" />
 
-						<g:if test="${session.role != 'MAHASISWA'}">
+						<g:if test="${session.role != 'MAHASISWA' && session.role != 'DOSEN'}">
 						<g:sortableColumn property="email" title="${message(code: 'profilKeminatanMahasiswa.email.label', default: 'Action')}" />
 						</g:if>
 					</tr>
@@ -61,7 +63,7 @@
 
 						<td>${fieldValue(bean: profilKeminatanMahasiswaInstance, field: "status")}</td>
 
-						<g:if test="${session.role != 'MAHASISWA'}">
+						<g:if test="${session.role != 'MAHASISWA' && session.role != 'DOSEN'}">
 						<td>
 						<g:if test="${!profilKeminatanMahasiswaInstance.status}">
 						<g:if test="${session.role != 'ADMIN'}">
