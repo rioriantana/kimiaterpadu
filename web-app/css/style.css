@@ -227,3 +227,10 @@ body {
 #powered a:hover{
 	color:#292929;
 }
+
+
+.cari{
+	margin-left: 15px;
+	margin-bottom: 5px;
+	float: right;
+}

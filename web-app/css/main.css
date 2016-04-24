@@ -633,3 +633,8 @@ a.skip {
 	position: absolute;
 	left: -9999px;
 }
+
+.cari{
+	margin-left: 35px;
+	margin-bottom: 15px;
+}

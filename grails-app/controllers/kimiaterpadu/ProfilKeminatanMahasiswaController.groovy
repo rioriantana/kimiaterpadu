@@ -24,12 +24,29 @@ class ProfilKeminatanMahasiswaController {
         def count = []
         def dosen = Pembimbing.get(session.user)
         if(session.role == "KAPRODI" || session.role == "KOMISI SKRIPSI" || session.role == "ADMIN"){
+            if(!params.cari){
             list = ProfilKeminatanMahasiswa.list(params)
             count = ProfilKeminatanMahasiswa.count()
         }
+            else{
+            def cari = "%"+params.nim+"%"
+            cari = cari.toUpperCase()
+            list = ProfilKeminatanMahasiswa.executeQuery("from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari", [cari: cari])   
+            count = ProfilKeminatanMahasiswa.executeQuery("select count(*) from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari", [cari: cari])
+            print cari
+        }
+        }
         else{
+            if(!params.cari){
             list = ProfilKeminatanMahasiswa.findAllByDosenPembimbing(dosen, params)
             count = ProfilKeminatanMahasiswa.countByDosenPembimbing(dosen, params)
+            }
+            else{
+            def cari = "%"+params.nim+"%"
+            cari = cari.toUpperCase()
+            list = ProfilKeminatanMahasiswa.executeQuery("from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari and dosenPembimbing = :dosen", [cari: cari, dosen: dosen])   
+            count = ProfilKeminatanMahasiswa.executeQuery("select count(*) from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari and dosenPembimbing = :dosen", [cari: cari, dosen: dosen])
+            }
         }
         [profilKeminatanMahasiswaInstanceList: list, profilKeminatanMahasiswaInstanceCount: count]
     }

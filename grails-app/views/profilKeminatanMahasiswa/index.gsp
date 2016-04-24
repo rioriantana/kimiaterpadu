@@ -18,7 +18,12 @@
 			</ul>
 		</div>
 		<div id="list-profilKeminatanMahasiswa" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			<h1>Daftar Keminatan Mahasiswa</h1>
+			<div class="cari">
+			<g:form url="[action:'index']"  enctype="multipart/form-data">
+				<input type="text" name='nim' id='nim' placeholder="NIM Mahasiswa">
+				<input type="submit" value="Cari" name="cari">
+			</g:form></div>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
