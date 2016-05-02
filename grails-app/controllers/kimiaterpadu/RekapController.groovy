@@ -23,7 +23,7 @@ class RekapController {
         def lamaStudi = a.get{projections{avg "lamaStudi"}}
         def ipk = a.get{projections{avg "ipk"}}
         def lamaSkripsi = a.get{projections{avg "lamaSkripsi"}}
-        render(controller: this, template: "rekapMahasiswaWisuda", model: [informasiInstance: informasiInstance, informasiInstanceCount: informasiInstanceCount, tahunAngkatan: tahunAngkatan, lamaStudi: lamaStudi, ipk: ipk, lamaSkripsi: lamaSkripsi])
+        render(controller: this, template: "rekapMahasiswaWisudaTahunAngkatan", model: [informasiInstance: informasiInstance, informasiInstanceCount: informasiInstanceCount, tahunAngkatan: tahunAngkatan, lamaStudi: lamaStudi, ipk: ipk, lamaSkripsi: lamaSkripsi])
     }
     def rekapMahasiswaWisudaTahunAkademik(){
     	if(!params.tanggalAwal && !params.tanggalAkhir){

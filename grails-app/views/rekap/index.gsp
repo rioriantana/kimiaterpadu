@@ -144,12 +144,18 @@ def user = session.user;
 		def salesExpenses = [ ['2012', '100', '60', '200', '65'],['2013', '80', '50', '85', '59'],['2014', '125', '90', '112', '91'],['2015', '155', '120', '130', '95']]
 		def variabelKeminatan = [['string', 'Task'], ['number', 'Kimia Organik'], ['number', 'Kimia Analitik'], ['number', 'Kimia Fisik'], ['number', 'Kimia Anorganik']]
 		def rekapKeminatan = [ ['2012', '5', '11', '15', '8'],['2013', '8', '5', '9', '6'],['2014', '13', '9', '11', '9'],['2015', '16', '12', '13', '10']]
-		def judulJurnal = [['string', 'Task'], ['number', 'Persentase']]
-		def dataDosenJurnal = [['Iwan Yahya', 30],['Nuryani', 24],['Suparmi',15],['Ahmad Marzuki', 21]]
        
 %>	
 <gvisualization:columnCoreChart elementId="prestasiDosen"   hAxis= "${new Expando([slantedTextAngle:'180',textStyle:new Expando(color:'black', fontName:'Arial', fontSize:14)])}"  bar= "${new Expando(groupWidth:'40%')}" chartArea="${new Expando(top:70, width:'100%' , height:'60%', left:50,bottom:150)}" title="Penelitian dan Karya Ilmiah Prodi Kimia"  titleTextStyle="${ new Expando([color:'black', fontName:'Arial', fontSize:14])}" width="${700}" height="${400}" columns="${defineDataTypeOfVariables}" data="${salesExpenses}" />
 <gvisualization:columnCoreChart elementId="keminatan"   hAxis= "${new Expando([slantedTextAngle:'180',textStyle:new Expando(color:'black', fontName:'Arial', fontSize:14)])}"  bar= "${new Expando(groupWidth:'40%')}" chartArea="${new Expando(top:70, width:'100%' , height:'60%', left:50,bottom:150)}" title="Keminatan Mahasiswa Prodi Kimia 4 Tahun Terahir"  titleTextStyle="${ new Expando([color:'black', fontName:'Arial', fontSize:14])}" width="${700}" height="${400}" columns="${variabelKeminatan}" data="${rekapKeminatan}" />
+
+	<div class="row">
+			<ul>
+				<li><g:link action="rekapMahasiswaWisudaTahunAngkatan">Rekap Mahasiswa Wisuda Berdasarkan Tahun Angkatan</g:link></li>
+				<li><g:link action="rekapMahasiswaWisudaTahunAkademik">Rekap Mahasiswa Wisuda Berdasarkan Tahun Akademik</g:link></li>
+				<li><g:link action="rekapMahasiswaWisudaTahunBerjalan">Rekap Mahasiswa Wisuda Berdasarkan Tahun Berjalan</g:link></li>
+			</ul>
+			</div>
 			</div>
 			</div>
 		</div>
