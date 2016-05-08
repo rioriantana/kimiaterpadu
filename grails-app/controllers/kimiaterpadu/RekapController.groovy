@@ -53,4 +53,18 @@ class RekapController {
         def lamaSkripsi = a.get{projections{avg "lamaSkripsi"}}
         render(controller: this, template: "rekapMahasiswaWisudaTahunBerjalan", model: [informasiInstance: informasiInstance, informasiInstanceCount: informasiInstanceCount, tahunAngkatan: tahunAngkatan, lamaStudi: lamaStudi, ipk: ipk, lamaSkripsi: lamaSkripsi])
     }
+    def rekapKeminatanMahasiswaKimiaTahunBerjalan(){
+        if(!params.tanggalAwal && !params.tanggalAkhir){
+            return[]
+        }
+        def tanggalAwal = params.tanggalAwal
+        def tanggalAkhir = params.tanggalAkhir + 30
+        println tanggalAwal
+        println tanggalAkhir
+        list = ProfilKeminatanMahasiswa.findAllBytanggalUpdateBetween(tanggalAwal, tanggalAkhir)
+        render(controller: this, template: "rekapKeminatanMahasiswaKimiaTahunBerjalan", model: [profilKeminatanMahasiswaInstanceList: list, tanggalAwal: tanggalAwal, tanggalAkhir: tanggalAkhir])
+    }
+    def rekapKeminatanMahasiswaKimiaTahunAngkatan(){
+        
+    }
 }
