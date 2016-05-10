@@ -153,7 +153,7 @@ def user = session.user;
 			</ul>
 	<h2>Laporan Data Keminatan Mahasiswa</h2>
 			<ul>
-				<li><g:link action="rekapMahasiswaWisudaTahunAngkatan">Rekap Laporan Data Keminatan Mahasiswa</g:link></li>
+				<li><g:link action="rekapKeminatanMahasiswaKimiaTahunBerjalan">Rekap Laporan Data Keminatan Mahasiswa</g:link></li>
 			</ul>
 	<h2>Laporan Data Skripsi Mahasiswa Kimia</h2>
 			<ul>
