@@ -35,7 +35,7 @@
 </head>
 <body>
 <h3><center>Data Keminatan Program Studi Kimia FMIPA UNS<br>
-Periode Tahun Ajaran <g:formatDate format="yyyy" date="${tanggalAwal}"/> s/d <g:formatDate format="yyyy" date="${tanggalAkhir}"/></center></h3>
+Periode Bulan <g:formatDate format="MM-yyyy" date="${tanggalAwal}"/> s/d <g:formatDate format="MM-yyyy" date="${tanggalAkhir}"/></center></h3>
 
 <table width="100%">
     <tr>
@@ -52,7 +52,7 @@ Periode Tahun Ajaran <g:formatDate format="yyyy" date="${tanggalAwal}"/> s/d <g:
         <tr>
             <td>${i+1}</td>
             <td >${profilKeminatanMahasiswa?.nim}</td>
-            <td class="center">${profilKeminatanMahasiswa?.nama}</td>
+            <td >${profilKeminatanMahasiswa?.nama}</td>
             <td >${profilKeminatanMahasiswa?.metodePemilihanPembimbing}</td>
             <td >${profilKeminatanMahasiswa?.dosenPembimbing}</td>
             <td class="center">${profilKeminatanMahasiswa?.keminatan}</td>
