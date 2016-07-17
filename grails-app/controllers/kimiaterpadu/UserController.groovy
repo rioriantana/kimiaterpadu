@@ -6,6 +6,7 @@ class UserController {
 		if(!session.user) {
 		redirect(action:'login')
 	}
+	
 	}
 	
     def login() { 
