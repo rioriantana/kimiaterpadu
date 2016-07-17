@@ -59,12 +59,10 @@ class RekapController {
         }
         def tanggalAwal = params.tanggalAwal
         def tanggalAkhir = params.tanggalAkhir + 30
-        println tanggalAwal
-        println tanggalAkhir
-        list = ProfilKeminatanMahasiswa.findAllBytanggalUpdateBetween(tanggalAwal, tanggalAkhir)
+        def list = ProfilKeminatanMahasiswa.findAllByTanggalUpdateBetween(tanggalAwal, tanggalAkhir)
         render(controller: this, template: "rekapKeminatanMahasiswaKimiaTahunBerjalan", model: [profilKeminatanMahasiswaInstanceList: list, tanggalAwal: tanggalAwal, tanggalAkhir: tanggalAkhir])
     }
-    def rekapKeminatanMahasiswaKimiaTahunAngkatan(){
+    def rekapSkripsiAngkatan(){
         
     }
 }

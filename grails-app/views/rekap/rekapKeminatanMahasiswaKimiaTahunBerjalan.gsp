@@ -14,7 +14,7 @@
 			</ul>
 		</div>
 		<div id="list-informasi" class="content scaffold-list" role="main">
-			<h1>Detile Mahasiswa Lulus Berdasarkan Tahun Akademik</h1>
+			<h1>Detile Keminatan Mahasiswa Berdasarkan Tahun Akademik</h1>
 			<g:form url="[resource:profilKeminatanMahasiswa, action:'rekapKeminatanMahasiswaKimiaTahunBerjalan']" >
 				<fieldset class="form">
 					<strong>Bulan : </strong>
