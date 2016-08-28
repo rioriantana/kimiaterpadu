@@ -170,6 +170,17 @@ class ProfilKeminatanMahasiswaController {
         }
         redirect (action:"index")
     }
+    def batalSetuju(){
+        def profilKeminatanMahasiswaInstance = ProfilKeminatanMahasiswa.get(params.id)
+        def pembimbingInstance = profilKeminatanMahasiswaInstance.dosenPembimbing
+        profilKeminatanMahasiswaInstance.status = null
+        profilKeminatanMahasiswaInstance.save flush:true
+        pembimbingInstance.kuota = pembimbingInstance.kuota + 1
+        pembimbingInstance.save flush:true
+        flash.message = "Status keminatan berhasil dibatalkan."
+        redirect (action:"index")
+        return
+    }
     def profilKu(){
         def profilKu = ProfilKeminatanMahasiswa.get(session.user)
         [profilKeminatanMahasiswaInstance: profilKu]

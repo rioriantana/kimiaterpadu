@@ -77,6 +77,11 @@
 						<g:if test="${session.role == 'KOMISI SKRIPSI' || session.role == 'ADMIN'}"> | <g:link action="edit" id="${profilKeminatanMahasiswaInstance.id}">Edit</g:link>
 						</g:if>
 						</g:if>
+						<g:else>
+							<g:if test="${session.role == 'KOMISI SKRIPSI'}">  
+							<g:link action="batalSetuju" id="${profilKeminatanMahasiswaInstance.id}">Batalkan</g:link>
+							</g:if>
+						</g:else>
 						</td>
 						</g:if>
 					</tr>
