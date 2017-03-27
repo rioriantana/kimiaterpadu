@@ -61,10 +61,10 @@
 						<g:if test="${session.role != 'MAHASISWA'}">
 						<td>
 						<g:if test="${!pendaftaranSkripsiInstance.status}">
-						<g:link action="setujui" id="${pendaftaranSkripsiInstance.id}">Setujui</g:link>
-						<g:if test="${session.role == 'KOMISI SKRIPSI'}"> | <g:link action="edit" id="${pendaftaranSkripsiInstance.id}">Edit</g:link>
+						<g:link action="setujui" id="${pendaftaranSkripsiInstance.id}">Setujui</g:link> <br> 
+						<g:if test="${session.role == 'KOMISI SKRIPSI'}"> <g:link action="edit" id="${pendaftaranSkripsiInstance.id}">Edit</g:link>  <br> 
 						</g:if>
-						</g:if>
+						</g:if><g:link controller="logbook" action="myLogbook" id="${pendaftaranSkripsiInstance.namaNIM.id}">Lihat Logbook</g:link>
 						</td>
 						</g:if>
 					</tr>

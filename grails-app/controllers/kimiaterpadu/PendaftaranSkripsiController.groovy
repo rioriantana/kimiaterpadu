@@ -61,6 +61,29 @@ class PendaftaranSkripsiController {
         }
     }
 
+    def saveNew(PendaftaranSkripsi pendaftaranSkripsiInstance){
+        if (pendaftaranSkripsiInstance == null) {
+            notFound()
+            return
+        }
+
+        if (pendaftaranSkripsiInstance.hasErrors()) {
+            respond pendaftaranSkripsiInstance.errors, view:'create'
+            return
+        }
+        def mahasiswa = ProfilKeminatanMahasiswa.get(params.namaNIM)
+        pendaftaranSkripsiInstance.namaNIM = mahasiswa
+        pendaftaranSkripsiInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.created.message', args: [message(code: 'pendaftaranSkripsi.label', default: 'PendaftaranSkripsi'), pendaftaranSkripsiInstance.id])
+                redirect (action: "profil", id: pendaftaranSkripsiInstance.id)
+            }
+            '*' { respond pendaftaranSkripsiInstance, [status: CREATED] }
+        }
+    }
+
     def edit(PendaftaranSkripsi pendaftaranSkripsiInstance) {
         respond pendaftaranSkripsiInstance
     }
@@ -82,7 +105,7 @@ class PendaftaranSkripsiController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'PendaftaranSkripsi.label', default: 'PendaftaranSkripsi'), pendaftaranSkripsiInstance.id])
-                redirect (action: "profil", id: pendaftaranSkripsiInstance.id)
+                redirect (action: "profil", id: pendaftaranSkripsiInstance.namaNIM.id)
             }
             '*'{ respond pendaftaranSkripsiInstance, [status: OK] }
         }
@@ -119,6 +142,7 @@ class PendaftaranSkripsiController {
     def profil() {
         def profilMahasiswa = ProfilKeminatanMahasiswa.get(params.id)
         def pendaftaranSkripsiInstance = PendaftaranSkripsi.findByNamaNIM(profilMahasiswa, params)
+        println profilMahasiswa
         if(!pendaftaranSkripsiInstance){
             flash.message = "Anda belum mendaftar skripsi, isi form pendaftaran berikut."
             redirect (action: "create", id: params.id)
