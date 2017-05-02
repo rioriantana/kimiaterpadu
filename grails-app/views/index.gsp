@@ -3,6 +3,8 @@
 <%
 def user = session.user;
 	def role = session.role;
+	def seting = grailsApplication.mainContext.getBean("setingService"); 
+	def keminatan = seting.keminatan();
 %>
 <html>
 	<head>
@@ -95,7 +97,10 @@ def user = session.user;
 				<g:if test="${!user}">
 				<li><g:link controller="mahasiswa" action="create" class="list" > Isi Biodata Mahasiswa Baru</g:link></li>
 				<li><g:link controller="mahasiswaWisuda" action="create" class="list" >Isi Biodata Mahasiswa Wisuda</g:link></li>
-				<li><g:link controller="profilKeminatanMahasiswa" class="list" action="create" >Pendaftaran Keminatan (untuk mahasiswa >= 110 SKS )</g:link></li>
+				<g:if test="${keminatan == '0'}">
+				<li><g:link controller="profilKeminatanMahasiswa" class="list" action="create" >
+				Pendaftaran Keminatan (untuk mahasiswa >= 110 SKS )</g:link></li>
+				</g:if>
 				<li><g:link controller="rekap" action="kuotaDosen" class="list" >Cek Kuota Bimbingan Dosen</g:link></li>
 				 <li><g:link controller="user" action="login" class="list" >Login</g:link></li> 
 				</g:if>
@@ -110,6 +115,11 @@ def user = session.user;
 				<g:elseif test="${role == 'KOMISI SKRIPSI'}">
 					<li><g:link controller="profilKeminatanMahasiswa" action="index" id="${session.user}" class="list" >Keminatan Mahasiswa</g:link></li>
 					<li><g:link controller="pendaftaranSkripsi" action="index" class="list" >Pendaftaran Skripsi</g:link></li>
+					<g:if test="${keminatan == '0'}">
+					<li><g:link controller="pengaturan" action="keminatan" class="list" >Tutup Pendaftaran Keminatan</g:link></li></g:if>
+					<g:if test="${keminatan == '1'}">
+						<li><g:link controller="pengaturan" action="keminatan" class="list" >Buka Pendaftaran Keminatan</g:link></li>
+						</g:if>
 					<li><g:link controller="rekap" action="index" class="list" >Rekap Laporan</g:link></li>
 				</g:elseif>
 				<g:elseif test="${role == 'KAPRODI'}">

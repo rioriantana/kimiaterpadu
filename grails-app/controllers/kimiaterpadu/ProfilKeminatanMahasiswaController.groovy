@@ -95,7 +95,8 @@ class ProfilKeminatanMahasiswaController {
     }
 
     def edit(ProfilKeminatanMahasiswa profilKeminatanMahasiswaInstance) {
-        respond profilKeminatanMahasiswaInstance
+        def role = session.role
+        [profilKeminatanMahasiswaInstance: profilKeminatanMahasiswaInstance, role: role]
     }
 
     @Transactional

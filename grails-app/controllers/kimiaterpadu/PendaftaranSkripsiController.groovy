@@ -78,7 +78,7 @@ class PendaftaranSkripsiController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'pendaftaranSkripsi.label', default: 'PendaftaranSkripsi'), pendaftaranSkripsiInstance.id])
-                redirect (action: "profil", id: pendaftaranSkripsiInstance.id)
+                redirect (action: "profil", id: pendaftaranSkripsiInstance.namaNIM.id)
             }
             '*' { respond pendaftaranSkripsiInstance, [status: CREATED] }
         }
