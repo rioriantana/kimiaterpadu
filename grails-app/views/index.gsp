@@ -120,6 +120,7 @@ def user = session.user;
 					<g:if test="${keminatan == '1'}">
 						<li><g:link controller="pengaturan" action="keminatan" class="list" >Buka Pendaftaran Keminatan</g:link></li>
 						</g:if>
+						<li><g:link controller="pembimbing" action="index" class="list" >Kuota Dosen</g:link></li>
 					<li><g:link controller="rekap" action="index" class="list" >Rekap Laporan</g:link></li>
 				</g:elseif>
 				<g:elseif test="${role == 'KAPRODI'}">
