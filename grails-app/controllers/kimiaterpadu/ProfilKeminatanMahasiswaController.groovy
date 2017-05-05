@@ -186,4 +186,12 @@ class ProfilKeminatanMahasiswaController {
         def profilKu = ProfilKeminatanMahasiswa.get(session.user)
         [profilKeminatanMahasiswaInstance: profilKu]
     }
+
+    def kirimEmail(){
+        sendMail {
+            to "rioriantana@yahoo.com"
+            subject "This is a test mail"
+            body "Hello, This is a test mail, how are you?"
+        }
+    }
 }

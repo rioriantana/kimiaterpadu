@@ -92,10 +92,35 @@ grails.hibernate.osiv.readonly = false
 environments {
     development {
         grails.logging.jul.usebridge = true
+   grails {
+    mail {
+    host = "smtp.gmail.com"
+    port = 465
+    username = "skripsikimiauns@gmail.com"
+    password = "skr1ps1k1m14"
+    props = ["mail.smtp.auth":"true",                     
+             "mail.smtp.socketFactory.port":"465",
+             "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+             "mail.smtp.socketFactory.fallback":"false"]
+       }
+       }
     }
     production {
+       grails {
+    mail {
+    host = "smtp.gmail.com"
+    port = 465
+    username = "skripsikimiauns@gmail.com"
+    password = "skr1ps1k1m14"
+    props = ["mail.smtp.auth":"true",                     
+             "mail.smtp.socketFactory.port":"465",
+             "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+             "mail.smtp.socketFactory.fallback":"false"]
+       }
+       }
         grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
+        grails.resources.processing.enabled = false
+     
     }
 }
 
