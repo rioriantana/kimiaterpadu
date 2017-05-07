@@ -67,8 +67,8 @@
 			</g:if>
 			</div>
 			<div id="submit">
-				<input type="image" src="${resource(dir: 'images', file: 'submit_hover.png')}" id="submit1" value="Kirim Email">
-				<input type="image" src="${resource(dir: 'images', file: 'submit.png')}" id="submit2" value="Kirim Email">
+				<input type="image" src="${resource(dir: 'images', file: 'lupa_password_hover.gif')}" id="submit1" value="Kirim Email">
+				<input type="image" src="${resource(dir: 'images', file: 'lupa_password.gif')}" id="submit2" value="Kirim Email">
 				
 			</div>
 </g:form>
