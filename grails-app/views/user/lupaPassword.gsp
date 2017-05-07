@@ -47,9 +47,8 @@
 
 		<div id="wrappermiddle">
 
-			<h2>Login</h2>
-
-	<g:form action="doLogin">
+			<h2>Masukan NIM Anda</h2>
+	<g:form action="lupaPassword">
 			<div id="username_input">
 
 				<div id="username_inputleft"></div>
@@ -62,25 +61,14 @@
 				<div id="username_inputright"></div>
 
 			</div>
-
 			<div id="password_input">
-
-				<div id="password_inputleft"></div>
-
-				<div id="password_inputmiddle">
-					<input type="password" name="password" id="url" Placeholder="Password" onclick="this.value = ''">
-					<img id="url_password" src="${resource(dir: 'images', file: 'passicon.png')}" alt="">
-			
-				</div>
-
-				<div id="password_inputright"></div>
-
+			<g:if test="${flash.message}">
+				<div class="message" role="status">${flash.message}</div>
+			</g:if>
 			</div>
-
-
 			<div id="submit">
-				<input type="image" src="${resource(dir: 'images', file: 'submit_hover.png')}" id="submit1" value="Sign In">
-				<input type="image" src="${resource(dir: 'images', file: 'submit.png')}" id="submit2" value="Sign In">
+				<input type="image" src="${resource(dir: 'images', file: 'submit_hover.png')}" id="submit1" value="Kirim Email">
+				<input type="image" src="${resource(dir: 'images', file: 'submit.png')}" id="submit2" value="Kirim Email">
 				
 			</div>
 </g:form>
@@ -93,7 +81,7 @@
 		</div>
 		
 		<div id="powered">
-		<p><g:link controller="user" action="lupaPassword">Lupa Password</g:link> | Belum Punya Akun? Daftar <g:link controller="profilKeminatanMahasiswa" action="Create">Disini</g:link>
+		<p><g:link controller="user" action="login">Login</g:link> | Belum Punya Akun? Daftar <g:link controller="profilKeminatanMahasiswa" action="Create">Disini</g:link>
 		</p>
 		</div>
 	</div>
