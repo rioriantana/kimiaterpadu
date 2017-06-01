@@ -33,8 +33,9 @@
 						<g:sortableColumn property="email" title="${message(code: 'pembimbing.email.label', default: 'Email')}" />
 					
 						<g:sortableColumn property="alamat" title="${message(code: 'pembimbing.alamat.label', default: 'Alamat')}" />
-					
-						<g:sortableColumn property="jenisKelamin" title="${message(code: 'pembimbing.jenisKelamin.label', default: 'Jenis Kelamin')}" />
+					<g:if test="${session.role == 'KOMISI SKRIPSI'}">
+						<g:sortableColumn property="jenisKelamin" title="${message(code: 'pembimbing.jenisKelamin.label', default: 'Action')}" />
+					</g:if>
 					
 					</tr>
 				</thead>
@@ -51,9 +52,9 @@
 						<td>${fieldValue(bean: pembimbingInstance, field: "email")}</td>
 					
 						<td>${fieldValue(bean: pembimbingInstance, field: "alamat")}</td>
-					
-						<td>${fieldValue(bean: pembimbingInstance, field: "jenisKelamin")}</td>
-					
+					<g:if test="${session.role == 'KOMISI SKRIPSI'}">
+						<td><g:link controller="profilKeminatanMahasiswa" action="keminatanDosen" id="${pembimbingInstance.id}">Lihat Bimbingan Aktif</g:link></td>
+					</g:if>
 					</tr>
 				</g:each>
 				</tbody>

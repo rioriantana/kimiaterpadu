@@ -51,6 +51,24 @@ class ProfilKeminatanMahasiswaController {
         [profilKeminatanMahasiswaInstanceList: list, profilKeminatanMahasiswaInstanceCount: count]
     }
 
+    def keminatanDosen(Integer max) {
+        params.max = Math.min(max ?: 100, 100)
+        def list = []
+        def count = []
+        def dosen = Pembimbing.get(params.id)
+        if(!params.cari){
+            list = ProfilKeminatanMahasiswa.findAllByDosenPembimbing(dosen, params)
+            count = ProfilKeminatanMahasiswa.countByDosenPembimbing(dosen, params)
+            }
+            else{
+            def cari = "%"+params.nim+"%"
+            cari = cari.toUpperCase()
+            list = ProfilKeminatanMahasiswa.executeQuery("from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari and dosenPembimbing = :dosen", [cari: cari, dosen: dosen])   
+            count = ProfilKeminatanMahasiswa.executeQuery("select count(*) from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari and dosenPembimbing = :dosen", [cari: cari, dosen: dosen])
+            }
+            [profilKeminatanMahasiswaInstanceList: list, profilKeminatanMahasiswaInstanceCount: count]
+    }
+
     def show(ProfilKeminatanMahasiswa profilKeminatanMahasiswaInstance) {
         respond profilKeminatanMahasiswaInstance
     }
