@@ -106,8 +106,9 @@ class LogbookController {
     def myLogbook(Integer max){
         params.max = Math.min(max ?: 10, 100)
         def nim = ProfilKeminatanMahasiswa.get(params.id)
+        def skripsi = PendaftaranSkripsi.findByNamaNIM(nim, params)
         def list = Logbook.findAllByNamaNIM(nim, params)
         def count = Logbook.countByNamaNIM(nim, params)
-        [logbookInstanceList: list, logbookInstanceCount:count]
+        [logbookInstanceList: list, logbookInstanceCount:count, skripsi: skripsi]
     }
 }

@@ -30,7 +30,7 @@
 					
 						<g:sortableColumn property="nama" title="${message(code: 'pembimbing.nama.label', default: 'Nama')}" />
 					
-						<g:sortableColumn property="email" title="${message(code: 'pembimbing.email.label', default: 'Email')}" />
+						<g:sortableColumn property="kuota" title="${message(code: 'pembimbing.kuota.label', default: 'Kuota Kosong')}" />
 					
 						<g:sortableColumn property="alamat" title="${message(code: 'pembimbing.alamat.label', default: 'Alamat')}" />
 					<g:if test="${session.role == 'KOMISI SKRIPSI'}">
@@ -49,7 +49,7 @@
 					
 						<td>${fieldValue(bean: pembimbingInstance, field: "nama")}</td>
 					
-						<td>${fieldValue(bean: pembimbingInstance, field: "email")}</td>
+						<td>${fieldValue(bean: pembimbingInstance, field: "kuota")}</td>
 					
 						<td>${fieldValue(bean: pembimbingInstance, field: "alamat")}</td>
 					<g:if test="${session.role == 'KOMISI SKRIPSI'}">

@@ -151,9 +151,48 @@ class PendaftaranSkripsiController {
     }
     def setujui(){
         def pendaftaranSkripsiInstance = PendaftaranSkripsi.get(params.id)
+        def keminatan = pendaftaranSkripsiInstance.namaNIM
+        println keminatan
+        keminatan.status = "SKRIPSI"
+        keminatan.save flush:true
         pendaftaranSkripsiInstance.status = "DISETUJUI"
         pendaftaranSkripsiInstance.save flush:true
         flash.message = "Pengajuan Skripsi Telah Disetujui"
+        redirect (action:"index")
+    }
+
+    def luluskan(){
+        def pendaftaranSkripsiInstance = PendaftaranSkripsi.get(params.id)
+        def keminatan = pendaftaranSkripsiInstance.namaNIM
+        def pembimbing = keminatan.dosenPembimbing
+        def kuotaPembimbing = pembimbing.kuota
+        println keminatan
+        println kuotaPembimbing
+        keminatan.status = "LULUS"
+        keminatan.save flush:true
+        if (pendaftaranSkripsiInstance.status != 'GHOST') {
+        pembimbing.kuota = kuotaPembimbing + 1
+        pembimbing.save flush:true
+        }
+        pendaftaranSkripsiInstance.status = "LULUS"
+        pendaftaranSkripsiInstance.save flush:true
+        flash.message = "Mahasiswa dengan NIM "+ keminatan.nim +" telah dinyatakan LULUS"
+        redirect (action:"index")
+    }
+
+    def ghost(){
+        def pendaftaranSkripsiInstance = PendaftaranSkripsi.get(params.id)
+        def keminatan = pendaftaranSkripsiInstance.namaNIM
+        def pembimbing = keminatan.dosenPembimbing
+        def kuotaPembimbing = pembimbing.kuota
+        println keminatan
+        keminatan.status = "GHOST"
+        keminatan.save flush:true
+        pembimbing.kuota = kuotaPembimbing + 1
+        pembimbing.save flush:true
+        pendaftaranSkripsiInstance.status = "GHOST"
+        pendaftaranSkripsiInstance.save flush:true
+        flash.message = "Mahasiswa dengan NIM "+ keminatan.nim +" telah berstatus GHOST"
         redirect (action:"index")
     }
 }

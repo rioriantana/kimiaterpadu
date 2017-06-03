@@ -32,9 +32,7 @@
 					
 						<g:sortableColumn property="judulSkripsi" title="${message(code: 'pendaftaranSkripsi.judulSkripsi.label', default: 'Judul Skripsi')}" />
 					
-						<g:sortableColumn property="email" title="${message(code: 'pendaftaranSkripsi.email.label', default: 'Email')}" />
-					
-						<g:sortableColumn property="tanggalSeminarProposal" title="${message(code: 'pendaftaranSkripsi.tanggalSeminarProposal.label', default: 'Tanggal Seminar Proposal')}" />
+						<g:sortableColumn property="status" title="${message(code: 'pendaftaranSkripsi.status.label', default: 'Status')}" />
 
 						<g:if test="${session.role != 'MAHASISWA'}">
 						<g:sortableColumn property="email" title="${message(code: 'profilKeminatanMahasiswa.email.label', default: 'Action')}" />
@@ -46,7 +44,7 @@
 				<g:each in="${pendaftaranSkripsiInstanceList}" status="i" var="pendaftaranSkripsiInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td>${fieldValue(bean: pendaftaranSkripsiInstance, field: "namaNIM")}</td>
+						<td><g:link action="show" id="${pendaftaranSkripsiInstance.id}"> ${fieldValue(bean: pendaftaranSkripsiInstance, field: "namaNIM")}</g:link></td>
 					
 						<td>${fieldValue(bean: pendaftaranSkripsiInstance, field: "pembimbing1")}</td>
 					
@@ -54,9 +52,7 @@
 					
 						<td>${fieldValue(bean: pendaftaranSkripsiInstance, field: "judulSkripsi")}</td>
 					
-						<td>${fieldValue(bean: pendaftaranSkripsiInstance, field: "email")}</td>
-					
-						<td><g:formatDate date="${pendaftaranSkripsiInstance.tanggalSeminarProposal}" /></td>
+						<td>${fieldValue(bean: pendaftaranSkripsiInstance, field: "status")}</td>
 						
 						<g:if test="${session.role != 'MAHASISWA'}">
 						<td>
