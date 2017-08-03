@@ -14,6 +14,12 @@
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<g:if test="${session.role != 'MAHASISWA' && session.role != 'DOSEN'}">
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link action="index" params="[filter: 'all']">All</g:link></li>
+				<li><g:link action="index" params="[filter: 'pendaftar']">Pendaftaran</g:link></li>
+				<li><g:link action="index" params="[filter: 'disetujui']">Disetujui</g:link></li>
+				<li><g:link action="index" params="[filter: 'skripsi']">Skripsi</g:link></li>
+				<li><g:link action="index" params="[filter: 'lulus']">Lulus</g:link></li>
+				<li><g:link action="index" params="[filter: 'ghost']">Ghost</g:link></li>
 				</g:if>
 			</ul>
 		</div>
@@ -71,17 +77,18 @@
 						<g:if test="${session.role != 'MAHASISWA' && session.role != 'DOSEN'}">
 						<td>
 						<g:if test="${!profilKeminatanMahasiswaInstance.status}">
-						<g:if test="${session.role != 'ADMIN'}">
-						<g:link action="setujui" id="${profilKeminatanMahasiswaInstance.id}">Setujui</g:link>
+							<g:if test="${session.role != 'ADMIN'}">
+								<g:link action="setujui" id="${profilKeminatanMahasiswaInstance.id}">Setujui</g:link>
+							</g:if>
+							<g:if test="${session.role == 'KOMISI SKRIPSI' || session.role == 'ADMIN'}"> | 		<g:link action="edit" id="${profilKeminatanMahasiswaInstance.id}"> 
+								Edit</g:link>
+							</g:if>
 						</g:if>
-						<g:if test="${session.role == 'KOMISI SKRIPSI' || session.role == 'ADMIN'}"> | <g:link action="edit" id="${profilKeminatanMahasiswaInstance.id}">Edit</g:link>
-						</g:if>
-						</g:if>
-						<g:else>
+						<g:if test="${profilKeminatanMahasiswaInstance.status == 'DISETUJUI'}">
 							<g:if test="${session.role == 'KOMISI SKRIPSI'}">  
 							<g:link action="batalSetuju" id="${profilKeminatanMahasiswaInstance.id}">Batalkan</g:link>
 							</g:if>
-						</g:else>
+						</g:if>
 						</td>
 						</g:if>
 					</tr>

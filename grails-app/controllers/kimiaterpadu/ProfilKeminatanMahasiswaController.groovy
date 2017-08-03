@@ -21,20 +21,92 @@ class ProfilKeminatanMahasiswaController {
     def index(Integer max) {
         params.max = Math.min(max ?: 100, 100)
         def list = []
+        def status = []
         def count = []
         def dosen = Pembimbing.get(session.user)
         if(session.role == "KAPRODI" || session.role == "KOMISI SKRIPSI" || session.role == "ADMIN"){
-            if(!params.cari){
-            list = ProfilKeminatanMahasiswa.list(params)
-            count = ProfilKeminatanMahasiswa.count()
-        }
-            else{
-            def cari = "%"+params.nim+"%"
-            cari = cari.toUpperCase()
-            list = ProfilKeminatanMahasiswa.executeQuery("from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari", [cari: cari])   
-            count = ProfilKeminatanMahasiswa.executeQuery("select count(*) from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari", [cari: cari])
-            print cari
-        }
+                   if (params.filter == "pendaftar") {
+                        if(!params.cari){
+                        list = ProfilKeminatanMahasiswa.executeQuery("from ProfilKeminatanMahasiswa as i where i.status is NULL")
+                        count = ProfilKeminatanMahasiswa.executeQuery("select count(*) from ProfilKeminatanMahasiswa as i where i.status is NULL")
+                         }
+                        else{
+                        def cari = "%"+params.nim+"%"
+                        cari = cari.toUpperCase()
+                        list = ProfilKeminatanMahasiswa.executeQuery("from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari and i.status is NULL", [cari: cari])   
+                        count = ProfilKeminatanMahasiswa.executeQuery("select count(*) from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari and i.status is NULL", [cari: cari])
+                        print cari
+                         }
+                   }
+                   if (params.filter == "disetujui") {
+                        status = "DISETUJUI"
+                        if(!params.cari){
+                        list = ProfilKeminatanMahasiswa.findAllByStatus(status, params)
+                        count = ProfilKeminatanMahasiswa.countByStatus(status, params)
+                         }
+                        else{
+                        def cari = "%"+params.nim+"%"
+                        cari = cari.toUpperCase()
+                        list = ProfilKeminatanMahasiswa.executeQuery("from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari and i.status = :status", [cari: cari, status: status])   
+                        count = ProfilKeminatanMahasiswa.executeQuery("select count(*) from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari and i.status = :status", [cari: cari, status: status])
+                        print cari
+                         }
+                   }
+                   else if(params.filter == "skripsi"){
+                        status = "SKRIPSI"
+                        if(!params.cari){
+                        list = ProfilKeminatanMahasiswa.findAllByStatus(status, params)
+                        count = ProfilKeminatanMahasiswa.countByStatus(status, params)
+                         }
+                        else{
+                        def cari = "%"+params.nim+"%"
+                        cari = cari.toUpperCase()
+                        list = ProfilKeminatanMahasiswa.executeQuery("from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari and i.status = :status", [cari: cari, status: status])   
+                        count = ProfilKeminatanMahasiswa.executeQuery("select count(*) from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari and i.status = :status", [cari: cari, status: status])
+                        print cari
+                         }
+                   }
+                   else if(params.filter == "lulus"){
+                        status = "LULUS"
+                        if(!params.cari){
+                        list = ProfilKeminatanMahasiswa.findAllByStatus(status, params)
+                        count = ProfilKeminatanMahasiswa.countByStatus(status, params)
+                         }
+                        else{
+                        def cari = "%"+params.nim+"%"
+                        cari = cari.toUpperCase()
+                        list = ProfilKeminatanMahasiswa.executeQuery("from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari and i.status = :status", [cari: cari, status: status])   
+                        count = ProfilKeminatanMahasiswa.executeQuery("select count(*) from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari and i.status = :status", [cari: cari, status: status])
+                        print cari
+                         }
+                   }
+                   else if(params.filter == "ghost"){
+                        status = "GHOST"
+                        if(!params.cari){
+                        list = ProfilKeminatanMahasiswa.findAllByStatus(status, params)
+                        count = ProfilKeminatanMahasiswa.countByStatus(status, params)
+                         }
+                        else{
+                        def cari = "%"+params.nim+"%"
+                        cari = cari.toUpperCase()
+                        list = ProfilKeminatanMahasiswa.executeQuery("from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari and i.status = :status", [cari: cari, status: status])   
+                        count = ProfilKeminatanMahasiswa.executeQuery("select count(*) from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari and i.status = :status", [cari: cari, status: status])
+                        print cari
+                         }
+                   }
+                   else{
+                    if(!params.cari){
+                    list = ProfilKeminatanMahasiswa.list(params)
+                    count = ProfilKeminatanMahasiswa.count()
+                     }
+                    else{
+                    def cari = "%"+params.nim+"%"
+                    cari = cari.toUpperCase()
+                    list = ProfilKeminatanMahasiswa.executeQuery("from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari", [cari: cari])   
+                    count = ProfilKeminatanMahasiswa.executeQuery("select count(*) from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari", [cari: cari])
+                    print cari
+                     }
+                 }
         }
         else{
             if(!params.cari){
