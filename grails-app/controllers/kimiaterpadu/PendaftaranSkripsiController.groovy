@@ -20,7 +20,28 @@ class PendaftaranSkripsiController {
     
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond PendaftaranSkripsi.list(params), model:[pendaftaranSkripsiInstanceCount: PendaftaranSkripsi.count()]
+        def filter = params.filter
+        def pendaftaranSkripsiInstance = []
+        def pendaftaranSkripsiInstanceCount = []
+        if (filter == "lulus") {
+            pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByStatus("LULUS")
+            pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.countByStatus("LULUS")
+
+            println pendaftaranSkripsiInstance
+        }
+        else if (filter == "skripsi") {
+            pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByStatus("SKRIPSI")
+            pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.countByStatus("SKRIPSI")
+        }
+        else if (filter == "ghost") {
+            pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByStatus("GHOST")
+            pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.countByStatus("GHOST")
+        }
+        else {
+            pendaftaranSkripsiInstance = PendaftaranSkripsi.list(params)
+            pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.count()
+        }
+        [pendaftaranSkripsiInstanceList: pendaftaranSkripsiInstance, pendaftaranSkripsiInstanceCount: pendaftaranSkripsiInstanceCount]
     }
 
     def show(PendaftaranSkripsi pendaftaranSkripsiInstance) {
