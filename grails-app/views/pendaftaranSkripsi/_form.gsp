@@ -43,7 +43,7 @@
 		<g:message code="pendaftaranSkripsi.judulSkripsi.label" default="Judul Skripsi" />
 		
 	</label>
-	<g:textField name="judulSkripsi" value="${pendaftaranSkripsiInstance?.judulSkripsi}"/>
+	<g:textArea name="judulSkripsi" value="${pendaftaranSkripsiInstance?.judulSkripsi}"/>
 
 </div>
 
@@ -58,28 +58,30 @@
 
 <div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'tanggalSeminarProposal', 'error')} ">
 	<label for="tanggalSeminarProposal">
-		<g:message code="pendaftaranSkripsi.tanggalSeminarProposal.label" default="Tanggal Seminar Proposal" />
+		<g:message code="pendaftaranSkripsi.tanggalSeminarProposal.label" default="Berkas Seminar Proposal" />
 		
 	</label>
-	<g:datePicker name="tanggalSeminarProposal" precision="day"  value="${pendaftaranSkripsiInstance?.tanggalSeminarProposal}" default="none" noSelection="['': '']" />
+	<g:link>Upload Berkas</g:link>
 
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'tanggalSeminarHasil', 'error')} ">
 	<label for="tanggalSeminarHasil">
-		<g:message code="pendaftaranSkripsi.tanggalSeminarHasil.label" default="Tanggal Seminar Hasil" />
+		<g:message code="pendaftaranSkripsi.tanggalSeminarHasil.label" default="Berkas Seminar Hasil" />
 		
 	</label>
-	<g:datePicker name="tanggalSeminarHasil" precision="day"  value="${pendaftaranSkripsiInstance?.tanggalSeminarHasil}" default="none" noSelection="['': '']" />
+	
+	<g:link>Upload Berkas</g:link>
 
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'tanggalUjianSkripsi', 'error')} ">
 	<label for="tanggalUjianSkripsi">
-		<g:message code="pendaftaranSkripsi.tanggalUjianSkripsi.label" default="Tanggal Ujian Skripsi" />
+		<g:message code="pendaftaranSkripsi.tanggalUjianSkripsi.label" default="Berkas Ujian Skripsi" />
 		
 	</label>
-	<g:datePicker name="tanggalUjianSkripsi" precision="day"  value="${pendaftaranSkripsiInstance?.tanggalUjianSkripsi}" default="none" noSelection="['': '']" />
+	
+	<g:link>Upload Berkas</g:link>
 
 </div>
 

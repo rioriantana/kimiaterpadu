@@ -30,8 +30,8 @@ class PendaftaranSkripsiController {
             println pendaftaranSkripsiInstance
         }
         else if (filter == "skripsi") {
-            pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByStatus("SKRIPSI")
-            pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.countByStatus("SKRIPSI")
+            pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByStatus("DISETUJUI")
+            pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.countByStatus("DISETUJUI")
         }
         else if (filter == "ghost") {
             pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByStatus("GHOST")

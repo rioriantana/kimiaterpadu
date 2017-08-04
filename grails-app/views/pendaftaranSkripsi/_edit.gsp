@@ -43,7 +43,7 @@
 		<g:message code="pendaftaranSkripsi.judulSkripsi.label" default="Judul Skripsi" />
 		
 	</label>
-	<g:textField name="judulSkripsi" value="${pendaftaranSkripsiInstance?.judulSkripsi}"/>
+	<g:textArea name="judulSkripsi" value="${pendaftaranSkripsiInstance?.judulSkripsi}"/>
 
 </div>
 
@@ -61,7 +61,8 @@
 		<g:message code="pendaftaranSkripsi.tanggalSeminarProposal.label" default="Tanggal Seminar Proposal" />
 		
 	</label>
-	<g:datePicker name="tanggalSeminarProposal" precision="day"  value="${pendaftaranSkripsiInstance?.tanggalSeminarProposal}" default="none" noSelection="['': '']" />
+	
+	<g:link>Upload Berkas</g:link>
 
 </div>
 
@@ -70,7 +71,8 @@
 		<g:message code="pendaftaranSkripsi.tanggalSeminarHasil.label" default="Tanggal Seminar Hasil" />
 		
 	</label>
-	<g:datePicker name="tanggalSeminarHasil" precision="day"  value="${pendaftaranSkripsiInstance?.tanggalSeminarHasil}" default="none" noSelection="['': '']" />
+	
+	<g:link>Upload Berkas</g:link>
 
 </div>
 
@@ -79,7 +81,8 @@
 		<g:message code="pendaftaranSkripsi.tanggalUjianSkripsi.label" default="Tanggal Ujian Skripsi" />
 		
 	</label>
-	<g:datePicker name="tanggalUjianSkripsi" precision="day"  value="${pendaftaranSkripsiInstance?.tanggalUjianSkripsi}" default="none" noSelection="['': '']" />
+	
+	<g:link>Upload Berkas</g:link>
 
 </div>
 
