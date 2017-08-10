@@ -240,4 +240,26 @@ class PendaftaranSkripsiController {
         flash.message = "Mahasiswa dengan NIM "+ keminatan.nim +" telah berstatus GHOST"
         redirect (action:"index")
     }
+
+    def setFileUpload(){
+        def nim = params.nim
+        def file = params.doc
+
+        def skripsi = PendaftaranSkripsi.executeQuery("from PendaftaranSkripsi as p where p.namaNIM.nim = :nim", [nim: nim])
+
+        if (file == "SP") {
+            skripsi.tanggalSeminarProposal = new Date()
+        }
+        else if (file == "SPH") {
+            skripsi.tanggalSeminarHasil = new Date()   
+        }
+        else{
+            skripsi.tanggalUjianSkripsi = new Date()
+        }
+        skripsi.save flush:true
+
+        flash.message = "File berhasil diupload."
+            redirect (action: "profil", id: skripsi.id)
+
+    }
 }

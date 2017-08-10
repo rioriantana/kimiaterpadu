@@ -79,7 +79,7 @@
 		<g:message code="pendaftaranSkripsi.tanggalSeminarProposal.label" default="Berkas Seminar Proposal" />
 		
 	</label>
-	<g:link>Upload Berkas</g:link>
+	<a href="http://103.23.224.151/upload/index.php?nim=${pendaftaranSkripsiInstance.namaNIM.nim}&file=SP">Upload Berkas</a>
 
 </div>
 
@@ -89,7 +89,7 @@
 		
 	</label>
 	
-	<g:link>Upload Berkas</g:link>
+	<a href="http://103.23.224.151/upload/index.php?nim=${pendaftaranSkripsiInstance.namaNIM.nim}&file=SPH">Upload Berkas</a>
 
 </div>
 
@@ -99,7 +99,7 @@
 		
 	</label>
 	
-	<g:link>Upload Berkas</g:link>
+	<a href="http://103.23.224.151/upload/index.php?nim=${pendaftaranSkripsiInstance.namaNIM.nim}&file=SPHS">Upload Berkas</a>
 
 </div>
 

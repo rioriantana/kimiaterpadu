@@ -38,6 +38,26 @@
 	</g:else>
 </div>
 
+
+<div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'penguji1', 'error')} ">
+	<label for="penguji1">
+		<g:message code="pendaftaranSkripsi.penguji1.label" default="Penguji 1" />
+		
+	</label>
+	<g:textField name="penguji1" value="${pendaftaranSkripsiInstance?.penguji1}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'penguji2', 'error')} ">
+	<label for="penguji2">
+		<g:message code="pendaftaranSkripsi.penguji2.label" default="Penguji 2" />
+		
+	</label>
+	<g:textField name="penguji2" value="${pendaftaranSkripsiInstance?.penguji2}"/>
+
+</div>
+
+
 <div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'judulSkripsi', 'error')} ">
 	<label for="judulSkripsi">
 		<g:message code="pendaftaranSkripsi.judulSkripsi.label" default="Judul Skripsi" />
@@ -62,7 +82,7 @@
 		
 	</label>
 	
-	<g:link>Upload Berkas</g:link>
+	<a href="http://103.23.224.151/upload/index.php?nim=${pendaftaranSkripsiInstance.namaNIM.nim}&file=SP">Upload Berkas</a>
 
 </div>
 
@@ -72,7 +92,7 @@
 		
 	</label>
 	
-	<g:link>Upload Berkas</g:link>
+	<a href="http://103.23.224.151/upload/index.php?nim=${pendaftaranSkripsiInstance.namaNIM.nim}&file=SPH">Upload Berkas</a>
 
 </div>
 
@@ -82,7 +102,7 @@
 		
 	</label>
 	
-	<g:link>Upload Berkas</g:link>
+	<a href="http://103.23.224.151/upload/index.php?nim=${pendaftaranSkripsiInstance.namaNIM.nim}&file=SPHS">Upload Berkas</a>
 
 </div>
 
