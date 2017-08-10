@@ -23,23 +23,47 @@ class PendaftaranSkripsiController {
         def filter = params.filter
         def pendaftaranSkripsiInstance = []
         def pendaftaranSkripsiInstanceCount = []
-        if (filter == "lulus") {
-            pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByStatus("LULUS")
-            pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.countByStatus("LULUS")
+        if (session.role == "KOMISI SKRIPSI") {
+            if (filter == "lulus") {
+                pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByStatus("LULUS")
+                pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.countByStatus("LULUS")
 
-            println pendaftaranSkripsiInstance
-        }
-        else if (filter == "skripsi") {
-            pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByStatus("DISETUJUI")
-            pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.countByStatus("DISETUJUI")
-        }
-        else if (filter == "ghost") {
-            pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByStatus("GHOST")
-            pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.countByStatus("GHOST")
+                println pendaftaranSkripsiInstance
+            }
+            else if (filter == "skripsi") {
+                pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByStatus("DISETUJUI")
+                pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.countByStatus("DISETUJUI")
+            }
+            else if (filter == "ghost") {
+                pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByStatus("GHOST")
+                pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.countByStatus("GHOST")
+            }
+            else {
+                pendaftaranSkripsiInstance = PendaftaranSkripsi.list(params)
+                pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.count()
+            }   
         }
         else {
-            pendaftaranSkripsiInstance = PendaftaranSkripsi.list(params)
-            pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.count()
+            def dosenPembimbing = Pembimbing.get(session.user)
+            println dosenPembimbing
+             if (filter == "lulus") {
+                pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByStatusAndPembimbing1("LULUS", dosenPembimbing, params)
+                pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.countByStatusAndPembimbing1("LULUS", dosenPembimbing, params)
+
+                println pendaftaranSkripsiInstance
+            }
+            else if (filter == "skripsi") {
+                pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByStatusAndPembimbing1("DISETUJUI", dosenPembimbing, params)
+                pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.countByStatusAndPembimbing1("DISETUJUI", dosenPembimbing, params)
+            }
+            else if (filter == "ghost") {
+                pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByStatusAndPembimbing1("GHOST", dosenPembimbing, params)
+                pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.countByStatusAndPembimbing1("GHOST", dosenPembimbing, params)
+            }
+            else {
+                pendaftaranSkripsiInstance = PendaftaranSkripsi.findAllByPembimbing1(dosenPembimbing, params)
+                pendaftaranSkripsiInstanceCount = PendaftaranSkripsi.countByPembimbing1(dosenPembimbing, params)
+            }   
         }
         [pendaftaranSkripsiInstanceList: pendaftaranSkripsiInstance, pendaftaranSkripsiInstanceCount: pendaftaranSkripsiInstanceCount]
     }

@@ -111,6 +111,7 @@ def user = session.user;
 				</g:if>
 				<g:elseif test="${role == 'DOSEN'}">
 					<li><g:link controller="profilKeminatanMahasiswa" action="index" id="${session.user}" class="list" >Keminatan Mahasiswa</g:link></li>
+					<li><g:link controller="pendaftaranSkripsi" action="index" id="${session.user}" class="list" >Skripsi Mahasiswa</g:link></li>
 				</g:elseif>
 				<g:elseif test="${role == 'KOMISI SKRIPSI'}">
 					<li><g:link controller="profilKeminatanMahasiswa" action="index" id="${session.user}" class="list" >Keminatan Mahasiswa</g:link></li>

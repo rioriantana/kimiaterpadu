@@ -48,6 +48,24 @@
 					
 				</li>
 				</g:if>
+
+				<g:if test="${pendaftaranSkripsiInstance?.penguji1}">
+				<li class="fieldcontain">
+					<span id="penguji1-label" class="property-label"><g:message code="pendaftaranSkripsi.penguji1.label" default="Penguji 1" /></span>
+					
+						<span class="property-value" aria-labelledby="penguji1-label">${pendaftaranSkripsiInstance?.penguji1?.encodeAsHTML()}</span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${pendaftaranSkripsiInstance?.penguji2}">
+				<li class="fieldcontain">
+					<span id="penguji2-label" class="property-label"><g:message code="pendaftaranSkripsi.penguji2.label" default="Penguji 2" /></span>
+					
+						<span class="property-value" aria-labelledby="penguji2-label">${pendaftaranSkripsiInstance?.penguji2?.encodeAsHTML()}</span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${pendaftaranSkripsiInstance?.judulSkripsi}">
 				<li class="fieldcontain">

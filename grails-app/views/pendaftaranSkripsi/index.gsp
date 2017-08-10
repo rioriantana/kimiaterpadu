@@ -12,8 +12,10 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<g:if test="${session.role == 'KOMISI SKRIPSI'}">
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-				<g:if test="${session.role != 'MAHASISWA' && session.role != 'DOSEN'}">
+				</g:if>
+				<g:if test="${session.role != 'MAHASISWA'}">
 				<li><g:link action="index" params="[filter: 'all']">All</g:link></li>
 				<li><g:link action="index" params="[filter: 'skripsi']">Skripsi</g:link></li>
 				<li><g:link action="index" params="[filter: 'lulus']">Lulus</g:link></li>

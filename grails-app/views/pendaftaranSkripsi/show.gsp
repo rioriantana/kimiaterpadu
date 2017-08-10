@@ -12,8 +12,10 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+			<g:if test="${session.role == 'KOMISI SKRIPSI'}">
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+			</g:if>
 			</ul>
 		</div>
 		<div id="show-pendaftaranSkripsi" class="content scaffold-show" role="main">
@@ -46,6 +48,24 @@
 					<span id="pembimbing2-label" class="property-label"><g:message code="pendaftaranSkripsi.pembimbing2.label" default="Pembimbing2" /></span>
 					
 						<span class="property-value" aria-labelledby="pembimbing2-label"><g:link controller="pembimbing" action="show" id="${pendaftaranSkripsiInstance?.pembimbing2?.id}">${pendaftaranSkripsiInstance?.pembimbing2?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${pendaftaranSkripsiInstance?.penguji1}">
+				<li class="fieldcontain">
+					<span id="penguji1-label" class="property-label"><g:message code="pendaftaranSkripsi.penguji1.label" default="Penguji 1" /></span>
+					
+						<span class="property-value" aria-labelledby="penguji1-label">${pendaftaranSkripsiInstance?.penguji1?.encodeAsHTML()}</span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${pendaftaranSkripsiInstance?.penguji2}">
+				<li class="fieldcontain">
+					<span id="penguji2-label" class="property-label"><g:message code="pendaftaranSkripsi.penguji2.label" default="Penguji 2" /></span>
+					
+						<span class="property-value" aria-labelledby="penguji2-label">${pendaftaranSkripsiInstance?.penguji2?.encodeAsHTML()}</span>
 					
 				</li>
 				</g:if>
@@ -105,12 +125,14 @@
 				</g:if>
 			
 			</ol>
+			<g:if test="${session.role == 'KOMISI SKRIPSI'}">
 			<g:form url="[resource:pendaftaranSkripsiInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${pendaftaranSkripsiInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
+			</g:if>
 		</div>
 	</body>
 </html>
