@@ -89,7 +89,7 @@
 				<li class="fieldcontain">
 					<span id="tanggalSeminarProposal-label" class="property-label"><g:message code="pendaftaranSkripsi.tanggalSeminarProposal.label" default="Tanggal Seminar Proposal" /></span>
 					
-						<span class="property-value" aria-labelledby="tanggalSeminarProposal-label"><g:formatDate date="${pendaftaranSkripsiInstance?.tanggalSeminarProposal}" /> <a target="_blank" href="http://103.23.224.151/upload/SP_${pendaftaranSkripsi.namaNIM.nim}">Lihat File</a></span>
+						<span class="property-value" aria-labelledby="tanggalSeminarProposal-label"><g:formatDate date="${pendaftaranSkripsiInstance?.tanggalSeminarProposal}" /> <a target="_blank" href="http://103.23.224.151/upload/SP_${pendaftaranSkripsi?.namaNIM?.nim}">Lihat File</a></span>
 					
 				</li>
 				</g:if>
@@ -98,7 +98,7 @@
 				<li class="fieldcontain">
 					<span id="tanggalSeminarHasil-label" class="property-label"><g:message code="pendaftaranSkripsi.tanggalSeminarHasil.label" default="Tanggal Seminar Hasil" /></span>
 					
-						<span class="property-value" aria-labelledby="tanggalSeminarHasil-label"><g:formatDate date="${pendaftaranSkripsiInstance?.tanggalSeminarHasil}" /> <a target="_blank" href="http://103.23.224.151/upload/SPH_${pendaftaranSkripsi.namaNIM.nim}">Lihat File</a></span>
+						<span class="property-value" aria-labelledby="tanggalSeminarHasil-label"><g:formatDate date="${pendaftaranSkripsiInstance?.tanggalSeminarHasil}" /> <a target="_blank" href="http://103.23.224.151/upload/SPH_${pendaftaranSkripsi?.namaNIM?.nim}">Lihat File</a></span>
 					
 				</li>
 				</g:if>
@@ -107,7 +107,7 @@
 				<li class="fieldcontain">
 					<span id="tanggalUjianSkripsi-label" class="property-label"><g:message code="pendaftaranSkripsi.tanggalUjianSkripsi.label" default="Tanggal Ujian Skripsi" /></span>
 					
-						<span class="property-value" aria-labelledby="tanggalUjianSkripsi-label"><g:formatDate date="${pendaftaranSkripsiInstance?.tanggalUjianSkripsi}" /><a target="_blank" href="http://103.23.224.151/upload/SPS_${pendaftaranSkripsi.namaNIM.nim}">Lihat File</a></span>
+						<span class="property-value" aria-labelledby="tanggalUjianSkripsi-label"><g:formatDate date="${pendaftaranSkripsiInstance?.tanggalUjianSkripsi}" /><a target="_blank" href="http://103.23.224.151/upload/SPS_${pendaftaranSkripsi?.namaNIM?.nim}">Lihat File</a></span>
 					
 				</li>
 				</g:if>
