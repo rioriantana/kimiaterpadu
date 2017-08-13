@@ -12,6 +12,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'tanggalKRS', 'error')} ">
+	<label for="tanggalKRS">
+		<g:message code="pendaftaranSkripsi.tanggalKRS.label" default="Tanggal Ambil KRS Skripsi" />
+		
+	</label>
+	<g:datePicker name="tanggalKRS" precision="day"  value="${pendaftaranSkripsiInstance?.tanggalKRS}" default="none" noSelection="['':'']"  />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'pembimbing1', 'error')} ">
 	<label for="pembimbing1">
 		<g:message code="pendaftaranSkripsi.pembimbing1.label" default="Pembimbing1" />
@@ -81,8 +90,8 @@
 		<g:message code="pendaftaranSkripsi.tanggalSeminarProposal.label" default="Tanggal Seminar Proposal" />
 		
 	</label>
-	
-	<a href="http://103.23.224.151/upload/index.php?nim=${pendaftaranSkripsiInstance.namaNIM.nim}&file=SP">Upload Berkas</a>
+	<g:datePicker name="tanggalSeminarProposal" precision="day"  value="${pendaftaranSkripsiInstance?.tanggalSeminarProposal}" default="none" noSelection="['':'']"  />
+	<a href="http://103.23.224.151/upload/index.php?nim=${pendaftaranSkripsiInstance.namaNIM.nim}&file=SP" target="_blank">Upload Berkas</a>
 
 </div>
 
@@ -91,8 +100,8 @@
 		<g:message code="pendaftaranSkripsi.tanggalSeminarHasil.label" default="Tanggal Seminar Hasil" />
 		
 	</label>
-	
-	<a href="http://103.23.224.151/upload/index.php?nim=${pendaftaranSkripsiInstance.namaNIM.nim}&file=SPH">Upload Berkas</a>
+	<g:datePicker name="tanggalSeminarHasil" precision="day"  value="${pendaftaranSkripsiInstance?.tanggalSeminarHasil}" default="none" noSelection="['':'']"  />
+	<a href="http://103.23.224.151/upload/index.php?nim=${pendaftaranSkripsiInstance.namaNIM.nim}&file=SPKH" target="_blank">Upload Berkas</a>
 
 </div>
 
@@ -101,8 +110,8 @@
 		<g:message code="pendaftaranSkripsi.tanggalUjianSkripsi.label" default="Tanggal Ujian Skripsi" />
 		
 	</label>
-	
-	<a href="http://103.23.224.151/upload/index.php?nim=${pendaftaranSkripsiInstance.namaNIM.nim}&file=SPHS">Upload Berkas</a>
+	<g:datePicker name="tanggalUjianSkripsi" precision="day"  value="${pendaftaranSkripsiInstance?.tanggalUjianSkripsi}" default="none" noSelection="['':'']"  />
+	<a href="http://103.23.224.151/upload/index.php?nim=${pendaftaranSkripsiInstance.namaNIM.nim}&file=SPKHL" target="_blank">Upload Berkas</a>
 
 </div>
 

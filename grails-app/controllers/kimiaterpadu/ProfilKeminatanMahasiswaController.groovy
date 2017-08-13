@@ -20,6 +20,12 @@ class ProfilKeminatanMahasiswaController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 100, 100)
+          if(!params.sort){
+            params.sort = 'id'
+        }
+            if(!params.order){
+            params.order = 'desc'
+        }
         def list = []
         def status = []
         def count = []
@@ -120,6 +126,7 @@ class ProfilKeminatanMahasiswaController {
             count = ProfilKeminatanMahasiswa.executeQuery("select count(*) from ProfilKeminatanMahasiswa as i where upper(i.nim) like :cari and dosenPembimbing = :dosen", [cari: cari, dosen: dosen])
             }
         }
+
         [profilKeminatanMahasiswaInstanceList: list, profilKeminatanMahasiswaInstanceCount: count]
     }
 
@@ -248,6 +255,12 @@ class ProfilKeminatanMahasiswaController {
     def setujui(){
         def profilKeminatanMahasiswaInstance = ProfilKeminatanMahasiswa.get(params.id)
         def pembimbingInstance = profilKeminatanMahasiswaInstance.dosenPembimbing
+        if (!params.sort) {
+            params.sort = "id"
+        }
+        if (!params.order) {
+            params.order = "asc"
+        }
         if(pembimbingInstance.kuota < 1){
             flash.message = "Maaf kuota pembimbing sudah penuh, mohon pilih pembimbing lain."
             redirect(action: "index")
@@ -259,9 +272,15 @@ class ProfilKeminatanMahasiswaController {
         pembimbingInstance.kuota = pembimbingInstance.kuota - 1
         pembimbingInstance.save flush:true
         }
-        redirect (action:"index")
+        redirect (action:"index", params: [sort: params.sort, order: params.order])
     }
     def batalSetuju(){
+        if (!params.sort) {
+            params.sort = "id"
+        }
+        if (!params.order) {
+            params.order = "asc"
+        }
         def profilKeminatanMahasiswaInstance = ProfilKeminatanMahasiswa.get(params.id)
         def pembimbingInstance = profilKeminatanMahasiswaInstance.dosenPembimbing
         profilKeminatanMahasiswaInstance.status = null
@@ -269,7 +288,7 @@ class ProfilKeminatanMahasiswaController {
         pembimbingInstance.kuota = pembimbingInstance.kuota + 1
         pembimbingInstance.save flush:true
         flash.message = "Status keminatan berhasil dibatalkan."
-        redirect (action:"index")
+        redirect (action:"index" , params: [sort: params.sort, order: params.order])
         return
     }
     def profilKu(){

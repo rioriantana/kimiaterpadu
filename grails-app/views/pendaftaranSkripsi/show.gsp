@@ -33,6 +33,19 @@
 					
 				</li>
 				</g:if>
+
+				<g:if test="${pendaftaranSkripsiInstance?.tanggalKRS}">
+				<li class="fieldcontain">
+					<span id="tanggalKRS-label" class="property-label"><g:message code="pendaftaranSkripsi.tanggalKRS.label" default="Tanggal Ambil KRS Skripsi" /></span>
+					
+						<span class="property-value" aria-labelledby="tanggalKRS-label">
+						
+						<g:formatDate date="${pendaftaranSkripsiInstance?.tanggalKRS}" /> 
+
+						</span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${pendaftaranSkripsiInstance?.pembimbing1}">
 				<li class="fieldcontain">
@@ -92,7 +105,16 @@
 				<li class="fieldcontain">
 					<span id="tanggalSeminarProposal-label" class="property-label"><g:message code="pendaftaranSkripsi.tanggalSeminarProposal.label" default="Tanggal Seminar Proposal" /></span>
 					
-						<span class="property-value" aria-labelledby="tanggalSeminarProposal-label"><g:formatDate date="${pendaftaranSkripsiInstance?.tanggalSeminarProposal}" /></span>
+						<span class="property-value" aria-labelledby="tanggalSeminarProposal-label"><g:formatDate date="${pendaftaranSkripsiInstance?.tanggalSeminarProposal}" />
+						
+						<a target="_blank" href="http://103.23.224.151/upload/uploads/SP_${pendaftaranSkripsiInstance?.namaNIM?.nim}.pdf">Lihat File</a>
+
+						<g:if test="${!pendaftaranSkripsiInstance.validasiSeminarProposal}">
+						<g:link action="verifikasi" id="${pendaftaranSkripsiInstance.id}" params="[page: '1']"> Verifikasi File</g:link>
+						</g:if>
+
+
+						</span>
 					
 				</li>
 				</g:if>
@@ -101,7 +123,16 @@
 				<li class="fieldcontain">
 					<span id="tanggalSeminarHasil-label" class="property-label"><g:message code="pendaftaranSkripsi.tanggalSeminarHasil.label" default="Tanggal Seminar Hasil" /></span>
 					
-						<span class="property-value" aria-labelledby="tanggalSeminarHasil-label"><g:formatDate date="${pendaftaranSkripsiInstance?.tanggalSeminarHasil}" /></span>
+						<span class="property-value" aria-labelledby="tanggalSeminarHasil-label">
+						<g:formatDate date="${pendaftaranSkripsiInstance?.tanggalSeminarHasil}" />
+
+						<a target="_blank" href="http://103.23.224.151/upload/uploads/SPKH_${pendaftaranSkripsiInstance?.namaNIM?.nim}.pdf">Lihat File</a>
+
+						<g:if test="${!pendaftaranSkripsiInstance.validasiSeminarHasil}">
+						<g:link action="verifikasi"  id="${pendaftaranSkripsiInstance.id}" params="[page: '2']"> Verifikasi File</g:link>
+						</g:if>
+
+						</span>
 					
 				</li>
 				</g:if>
@@ -110,7 +141,17 @@
 				<li class="fieldcontain">
 					<span id="tanggalUjianSkripsi-label" class="property-label"><g:message code="pendaftaranSkripsi.tanggalUjianSkripsi.label" default="Tanggal Ujian Skripsi" /></span>
 					
-						<span class="property-value" aria-labelledby="tanggalUjianSkripsi-label"><g:formatDate date="${pendaftaranSkripsiInstance?.tanggalUjianSkripsi}" /></span>
+						<span class="property-value" aria-labelledby="tanggalUjianSkripsi-label">
+						
+						<g:formatDate date="${pendaftaranSkripsiInstance?.tanggalUjianSkripsi}" />
+
+						<a target="_blank" href="http://103.23.224.151/upload/uploads/SPKHL_${pendaftaranSkripsiInstance?.namaNIM?.nim}.pdf">Lihat File</a>
+
+						<g:if test="${!pendaftaranSkripsiInstance.validasiUjianSkripsi}">
+						<g:link action="verifikasi"  id="${pendaftaranSkripsiInstance.id}" params="[page: '3']"> Verifikasi File</g:link>
+						</g:if>
+		
+						</span>
 					
 				</li>
 				</g:if>
@@ -125,6 +166,15 @@
 				</g:if>
 			
 			</ol>
+
+			<div class="content scaffold-show">
+			<ul class="property-list pendaftaranSkripsi">
+				<li>Upload File Semprop meliputi Berkas pendaftaran skripsi, daftar hadir peserta semprop, kartu biru (minimal 5 kali semhas)  dalam bentuk PDF</li>
+				<li>Upload File Semhas meliputi Berkas Pendaftaran semhas, bukti submit proposal, daftar hadir proposal, kartu biru (min 5ali semprop) dalam bentuk PDF</li>
+				<li>Upload File Pendadaran meliputi Berkas Pendaftaran ujian (bukti berita acara)  dalam bentuk PDF</li>
+			</ul>
+			</div>
+
 			<g:if test="${session.role == 'KOMISI SKRIPSI'}">
 			<g:form url="[resource:pendaftaranSkripsiInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

@@ -15,6 +15,7 @@ class PendaftaranSkripsi {
 	String validasiSeminarHasil
 	String validasiUjianSkripsi
 	String status
+	Date tanggalKRS
     static constraints = {
 		namaNIM(nullable: true)
 		pembimbing1(nullable: true)
@@ -28,6 +29,9 @@ class PendaftaranSkripsi {
 		validasiSeminarHasil(nullable: true)
 		validasiUjianSkripsi(nullable: true)
 		status(nullable: true)
+		penguji1(nullable: true)
+		penguji2(nullable: true)
+		tanggalKRS(nullable: true)
     }
     public String toString(){
     	"$namaNIM"

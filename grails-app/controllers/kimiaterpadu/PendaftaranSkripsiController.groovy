@@ -244,22 +244,44 @@ class PendaftaranSkripsiController {
     def setFileUpload(){
         def nim = params.nim
         def file = params.doc
+       def profilKeminatanMahasiswa = ProfilKeminatanMahasiswa.findByNim(nim, params)
+//        def skripsi = PendaftaranSkripsi.findByNamaNIM(profilKeminatanMahasiswa, params)
+//        if (file == "SP") {
+//            skripsi.tanggalSeminarProposal = new Date()
+//        }
+//        else if (file == "SPKH") {
+//            skripsi.tanggalSeminarHasil = new Date()
+//        }
+//        else{
+//            skripsi.tanggalUjianSkripsi = new Date()
+//        }
+//        skripsi.save flush:true
 
-        def skripsi = PendaftaranSkripsi.executeQuery("from PendaftaranSkripsi as p where p.namaNIM.nim = :nim", [nim: nim])
+        flash.message = "File "+file+"_"+nim+".pdf berhasil diupload."
+        redirect (action: "profil", id: profilKeminatanMahasiswa.id)
 
-        if (file == "SP") {
-            skripsi.tanggalSeminarProposal = new Date()
-        }
-        else if (file == "SPH") {
-            skripsi.tanggalSeminarHasil = new Date()   
-        }
-        else{
-            skripsi.tanggalUjianSkripsi = new Date()
-        }
-        skripsi.save flush:true
+    }
 
-        flash.message = "File berhasil diupload."
-            redirect (action: "profil", id: skripsi.id)
+    def verifikasi(){
+        def pendaftaranSkripsiInstance = PendaftaranSkripsi.get(params.id)
+        def page = params.page
+
+        if (page == "1") {
+            pendaftaranSkripsiInstance.validasiSeminarProposal = "OKE"
+            pendaftaranSkripsiInstance.status = "SP"
+        }
+        else if (page == "2") {
+            pendaftaranSkripsiInstance.validasiSeminarHasil = "OKE"
+            pendaftaranSkripsiInstance.status = "SPKH"
+        }
+        else if (page == "3"){
+            pendaftaranSkripsiInstance.validasiUjianSkripsi = "OKE"
+            pendaftaranSkripsiInstance.status = "SPKHL"
+        }
+        pendaftaranSkripsiInstance.save (flush:true)
+
+        flash.message = "Berhasil Validasi"
+        redirect (action: "show", id: pendaftaranSkripsiInstance.id)
 
     }
 }

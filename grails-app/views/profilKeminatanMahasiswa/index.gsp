@@ -1,4 +1,7 @@
-
+<%
+def sort = params.sort;
+def order = params.order;
+%>
 <%@ page import="kimiaterpadu.ProfilKeminatanMahasiswa" %>
 <!DOCTYPE html>
 <html>
@@ -78,15 +81,15 @@
 						<td>
 						<g:if test="${!profilKeminatanMahasiswaInstance.status}">
 							<g:if test="${session.role != 'ADMIN'}">
-								<g:link action="setujui" id="${profilKeminatanMahasiswaInstance.id}">Setujui</g:link>
+								<g:link action="setujui" id="${profilKeminatanMahasiswaInstance.id}" params="[sort: sort, order: order]">Setujui</g:link>
 							</g:if>
-							<g:if test="${session.role == 'KOMISI SKRIPSI' || session.role == 'ADMIN'}"> | 		<g:link action="edit" id="${profilKeminatanMahasiswaInstance.id}"> 
+							<g:if test="${session.role == 'KOMISI SKRIPSI' || session.role == 'ADMIN'}"> | 		<g:link action="edit" id="${profilKeminatanMahasiswaInstance.id}" > 
 								Edit</g:link>
 							</g:if>
 						</g:if>
 						<g:if test="${profilKeminatanMahasiswaInstance.status == 'DISETUJUI'}">
 							<g:if test="${session.role == 'KOMISI SKRIPSI'}">  
-							<g:link action="batalSetuju" id="${profilKeminatanMahasiswaInstance.id}">Batalkan</g:link>
+							<g:link action="batalSetuju" id="${profilKeminatanMahasiswaInstance.id}" params="[sort: sort, order: order]">Batalkan</g:link>
 							</g:if>
 						</g:if>
 						</td>

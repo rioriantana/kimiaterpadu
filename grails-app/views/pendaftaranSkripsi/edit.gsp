@@ -29,6 +29,15 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
+
+			<div class="content scaffold-show">
+			<ul class="property-list pendaftaranSkripsi">
+				<li>Upload File Semprop meliputi Berkas pendaftaran skripsi, daftar hadir peserta semprop, kartu biru (minimal 5 kali semhas)  dalam bentuk PDF</li>
+				<li>Upload File Semhas meliputi Berkas Pendaftaran semhas, bukti submit proposal, daftar hadir proposal, kartu biru (min 5ali semprop) dalam bentuk PDF</li>
+				<li>Upload File Pendadaran meliputi Berkas Pendaftaran ujian (bukti berita acara)  dalam bentuk PDF</li>
+			</ul>
+			</div>
+
 			<g:form url="[resource:pendaftaranSkripsiInstance, action:'update']" method="PUT" >
 				<g:hiddenField name="version" value="${pendaftaranSkripsiInstance?.version}" />
 				<fieldset class="form">
