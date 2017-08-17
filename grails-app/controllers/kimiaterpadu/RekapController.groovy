@@ -63,6 +63,12 @@ class RekapController {
         render(controller: this, template: "rekapKeminatanMahasiswaKimiaTahunBerjalan", model: [profilKeminatanMahasiswaInstanceList: list, tanggalAwal: tanggalAwal, tanggalAkhir: tanggalAkhir])
     }
     def rekapSkripsiAngkatan(){
-        
+        if(!params.tanggalAwal && !params.tanggalAkhir){
+            return[]
+        }
+         def tanggalAwal = params.tanggalAwal
+        def tanggalAkhir = params.tanggalAkhir + 30
+        def list = PendaftaranSkripsi.findAllByTanggalKRSBetween(tanggalAwal, tanggalAkhir)
+         render(controller: this, template: "rekapSkripsi", model: [pendaftaranSkripsiInstanceList: list, tanggalAwal: tanggalAwal, tanggalAkhir: tanggalAkhir])
     }
 }
