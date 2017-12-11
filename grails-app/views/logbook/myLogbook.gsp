@@ -15,10 +15,12 @@
 				<g:if test="${session.role == 'MAHASISWA'}">
 				<li><g:link class="create" action="create">Tambah Catatan</g:link></li>
 				</g:if>
-				<g:if test="${session.user == 'KOMISI SKRIPSI' || skripsi.status != 'LULUS'}">
+				<g:if test="${session.user == 'KOMISI SKRIPSI'}">
+				<g:if test="${skripsi.status != 'LULUS'}">
 				<li><g:link class="create" controller="pendaftaranSkripsi" action="luluskan" id="${skripsi.id}">Luluskan Mahasiswa</g:link></li>
 				<g:if test="${skripsi.status != 'GHOST'}">
 				<li><g:link class="create" controller="pendaftaranSkripsi" action="ghost" id="${skripsi.id}">Buat Ghost</g:link></li></g:if>
+				</g:if>
 				</g:if>
 			</ul>
 		</div>
