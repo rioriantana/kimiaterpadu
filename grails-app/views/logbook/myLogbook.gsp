@@ -17,9 +17,10 @@
 				</g:if>
 				<g:if test="${session.user == 'KOMISI SKRIPSI'}">
 				<g:if test="${skripsi.status != 'LULUS'}">
-				<li><g:link class="create" controller="pendaftaranSkripsi" action="luluskan" id="${skripsi.id}">Luluskan Mahasiswa</g:link></li>
+						<li><g:link class="create" controller="pendaftaranSkripsi" action="luluskan" id="${skripsi.id}">Luluskan Mahasiswa</g:link></li>
+				</g:if>
 				<g:if test="${skripsi.status != 'GHOST'}">
-				<li><g:link class="create" controller="pendaftaranSkripsi" action="ghost" id="${skripsi.id}">Buat Ghost</g:link></li></g:if>
+						<li><g:link class="create" controller="pendaftaranSkripsi" action="ghost" id="${skripsi.id}">Buat Ghost</g:link></li>
 				</g:if>
 				</g:if>
 			</ul>
