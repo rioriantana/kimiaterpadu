@@ -96,7 +96,6 @@ def user = session.user;
 				<ul>
 				<g:if test="${!user}">
 				<li><g:link controller="mahasiswa" action="create" class="list" > Isi Biodata Mahasiswa Baru</g:link></li>
-				<li><g:link controller="mahasiswaWisuda" action="create" class="list" >Isi Biodata Mahasiswa Wisuda</g:link></li>
 				<g:if test="${keminatan == '0'}">
 				<li><g:link controller="profilKeminatanMahasiswa" class="list" action="create" >
 				Pendaftaran Keminatan (untuk mahasiswa >= 110 SKS )</g:link></li>
@@ -108,6 +107,7 @@ def user = session.user;
 				<g:if test="${role == 'MAHASISWA'}">
 					<li><g:link controller="profilKeminatanMahasiswa" action="profil" id="${session.user}" class="list" >Lihat Profil Keminatan</g:link></li>
 					<li><g:link controller="pendaftaranSkripsi" action="profil" id="${session.user}" class="list" >Skripsi</g:link></li>
+					<li><g:link controller="mahasiswaWisuda" action="create" id="${session.user}" class="list" >Isi Biodata Mahasiswa Wisuda</g:link></li>
 				</g:if>
 				<g:elseif test="${role == 'DOSEN'}">
 					<li><g:link controller="profilKeminatanMahasiswa" action="index" id="${session.user}" class="list" >Keminatan Mahasiswa</g:link></li>
