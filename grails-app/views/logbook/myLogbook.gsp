@@ -1,6 +1,10 @@
 
 <%@ page import="kimiaterpadu.Logbook" %>
 <!DOCTYPE html>
+<%
+def user = session.user;
+def role = session.role;
+%>
 <html>
 	<head>
 		<meta name="layout" content="main">
@@ -15,7 +19,7 @@
 				<g:if test="${session.role == 'MAHASISWA'}">
 				<li><g:link class="create" action="create">Tambah Catatan</g:link></li>
 				</g:if>
-				<g:if test="${session.user == 'KOMISI SKRIPSI'}">
+				<g:if test="${session.role == 'KOMISI SKRIPSI'}">
 				<g:if test="${skripsi.status != 'LULUS'}">
 						<li><g:link class="create" controller="pendaftaranSkripsi" action="luluskan" id="${skripsi.id}">Luluskan Mahasiswa</g:link></li>
 				</g:if>
