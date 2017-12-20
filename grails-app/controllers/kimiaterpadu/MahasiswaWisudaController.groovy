@@ -37,14 +37,14 @@ class MahasiswaWisudaController {
     }
 
     def create() {
-        def keminatan = ProfilKeminatanMahasiswa.get(params.id)
-
-        if (keminatan.status != 'LULUS') {
+        def statusMahasiswa = ProfilKeminatanMahasiswa.get(params.id)
+        def keminatan = PendaftaranSkripsi.findByNamaNIM(statusMahasiswa)
+        if (statusMahasiswa.status != 'LULUS') {
             flash.message = "Maaf, anda belum dinyatakan lulus."
             redirect (url:'/')
             return []
         }
-        respond new MahasiswaWisuda(params)
+        respond new MahasiswaWisuda(params), model:[skripsi: keminatan]
     }
 
     @Transactional

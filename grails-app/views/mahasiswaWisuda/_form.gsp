@@ -7,7 +7,7 @@
 		<g:message code="mahasiswaWisuda.nim.label" default="NIM" />
 		
 	</label>
-	<g:textField name="nim" value="${mahasiswaWisudaInstance?.nim}"/>
+	<g:textField name="nim" value="${skripsi?.namaNIM?.nim}"/>
 
 </div>
 
@@ -16,7 +16,7 @@
 		<g:message code="mahasiswaWisuda.nama.label" default="Nama" />
 		
 	</label>
-	<g:textField name="nama" value="${mahasiswaWisudaInstance?.nama}"/>
+	<g:textField name="nama" value="${skripsi?.namaNIM?.nama}"/>
 
 </div>
 
@@ -62,7 +62,7 @@
 		<g:message code="mahasiswaWisuda.pembimbing1.label" default="Pembimbing1" />
 		
 	</label>
-	<g:select id="pembimbing1" name="pembimbing1.id" from="${kimiaterpadu.Pembimbing.findAllByRole('DOSEN')}" optionKey="id" value="${mahasiswaWisudaInstance?.pembimbing1?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="pembimbing1" name="pembimbing1.id" from="${kimiaterpadu.Pembimbing.findAllByRole('DOSEN')}" optionKey="id" value="${skripsi?.pembimbing1?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 
@@ -71,7 +71,7 @@
 		<g:message code="mahasiswaWisuda.pembimbing2.label" default="Pembimbing2" />
 		
 	</label>
-	<g:select id="pembimbing2" name="pembimbing2.id" from="${kimiaterpadu.Pembimbing.findAllByRole('DOSEN')}" optionKey="id" value="${mahasiswaWisudaInstance?.pembimbing2?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="pembimbing2" name="pembimbing2.id" from="${kimiaterpadu.Pembimbing.findAllByRole('DOSEN')}" optionKey="id" value="${skripsi?.pembimbing2?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 
@@ -80,7 +80,7 @@
 		<g:message code="mahasiswaWisuda.judulSkripsi.label" default="Judul Skripsi" />
 		
 	</label>
-	<g:textArea rows="5" cols="5" name="judulSkripsi" value="${mahasiswaWisudaInstance?.judulSkripsi}"/>
+	<g:textArea rows="5" cols="5" name="judulSkripsi" value="${skripsi?.judulSkripsi}"/>
 
 </div>
 
