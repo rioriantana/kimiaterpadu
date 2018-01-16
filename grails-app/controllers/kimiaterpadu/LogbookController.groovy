@@ -104,7 +104,7 @@ class LogbookController {
     }
 
     def myLogbook(Integer max){
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 100, 100)
         def nim = ProfilKeminatanMahasiswa.get(params.id)
         def skripsi = PendaftaranSkripsi.findByNamaNIM(nim, params)
         def list = Logbook.findAllByNamaNIM(nim, params)
