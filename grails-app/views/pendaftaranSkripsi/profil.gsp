@@ -169,7 +169,7 @@
 			<div class="content scaffold-show">
 			<ul class="property-list pendaftaranSkripsi">
 				<li>Upload file semprop meliputi berkas pendaftaran skripsi, berkas pendaftaran semprop, daftar hadir peserta semprop,  bukti kehadiran/partisipasi semprop (min 5 kali semprop) dalam bentuk PDF</li>
-				<li>upload file semhas meliputi berkas pendaftaran semhas, bukti submit proposal, daftar hadir proposal, bukti kehadiran/partisipasi semhas (min 5 kali semhas) dalam bentuk PDF</li>
+				<li>upload file semhas meliputi berkas pendaftaran semhas, bukti submit proposal, daftar hadir peserta semhas, bukti kehadiran/partisipasi semhas (min 5 kali semhas) dalam bentuk PDF</li>
 				<li>upload file sidang meliputi berkas pendaftaran ujian, dan berita acara dan surat yang menyatakan LULUS, dalam bentuk PDF</li>
 			</ul>
 			</div>
