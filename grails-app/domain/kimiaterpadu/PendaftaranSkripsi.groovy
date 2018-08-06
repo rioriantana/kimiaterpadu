@@ -4,6 +4,7 @@ class PendaftaranSkripsi {
 	ProfilKeminatanMahasiswa namaNIM
 	Pembimbing pembimbing1
 	Pembimbing pembimbing2
+	String pembimbing2Luar
 	String penguji1
 	String penguji2
 	String judulSkripsi
@@ -20,6 +21,7 @@ class PendaftaranSkripsi {
 		namaNIM(nullable: true)
 		pembimbing1(nullable: true)
 		pembimbing2(nullable: true)
+		pembimbing2Luar(nullable: true)
 		judulSkripsi(nullable: true)
 		email(nullable: true)
 		tanggalSeminarProposal(nullable: true)

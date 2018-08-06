@@ -78,7 +78,7 @@
 		${profilKeminatanMahasiswaInstance.dosenPembimbing}
 	</g:if>
 	<g:else>
-	<g:select id="dosenPembimbing" name="dosenPembimbing.id" from="${kimiaterpadu.Pembimbing.findAllByRoleAndKuotaBetween('DOSEN', 1, 9)}" optionKey="id" value="${profilKeminatanMahasiswaInstance?.dosenPembimbing?.id}" class="many-to-one" noSelection="['': '']"/>
+	<g:select id="dosenPembimbing" name="dosenPembimbing.id" from="${kimiaterpadu.Pembimbing.findAllByRoleAndKuotaGreaterThanEquals('DOSEN', 0)}" optionKey="id" value="${profilKeminatanMahasiswaInstance?.dosenPembimbing?.id}" class="many-to-one" noSelection="['': '']"/>
 	</g:else>
 
 </div>

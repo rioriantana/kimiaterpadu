@@ -36,7 +36,9 @@
 					
 						<th><g:message code="pendaftaranSkripsi.pembimbing1.label" default="Pembimbing1" /></th>
 					
-						<th><g:message code="pendaftaranSkripsi.pembimbing2.label" default="Pembimbing2" /></th>
+						<th>
+							<g:message code="pendaftaranSkripsi.pembimbing2.label" default="Pembimbing2" />
+						</th>
 					
 						<g:sortableColumn property="judulSkripsi" title="${message(code: 'pendaftaranSkripsi.judulSkripsi.label', default: 'Judul Skripsi')}" />
 					

@@ -61,6 +61,14 @@
 					
 				</li>
 				</g:if>
+				<g:else>
+					<li class="fieldcontain">
+					<span id="pembimbing2-label" class="property-label"><g:message code="pendaftaranSkripsi.pembimbing2.label" default="Pembimbing2" /></span>
+					
+						<span class="property-value" aria-labelledby="pembimbing2-label">${pendaftaranSkripsiInstance?.pembimbing2Luar?.encodeAsHTML()}</span>
+					
+				</li>
+				</g:else>
 
 				<g:if test="${pendaftaranSkripsiInstance?.penguji1}">
 				<li class="fieldcontain">

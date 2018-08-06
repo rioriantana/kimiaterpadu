@@ -45,9 +45,18 @@
 		${pendaftaranSkripsiInstance.pembimbing2}
 	</g:if>
 	<g:else>
-	<g:select id="pembimbing2" name="pembimbing2.id" from="${kimiaterpadu.Pembimbing.findAllByRole('DOSEN')}" optionKey="id" value="${pendaftaranSkripsiInstance?.pembimbing2?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="pembimbing2" onchange="myFunction()" name="pembimbing2.id" from="${kimiaterpadu.Pembimbing.findAllByRole('DOSEN')}" optionKey="id" value="${pendaftaranSkripsiInstance?.pembimbing2?.id}" class="many-to-one" noSelection="['null': '']"/>
 	</g:else>
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'pembimbing2Luar', 'error')} ">
+	<label for="pembimbing2Luar">
+		<div id="captionPem2L">Pembimbing 2 Luar Kimia</div>
+		
+	</label>
+	<g:textField id="pembimbing2Luar" name="pembimbing2Luar" value="${pendaftaranSkripsiInstance?.pembimbing2Luar}" placeholder="Tulis Nama Pembimbing Luar"/>
+</div>
+
 
 <div class="fieldcontain ${hasErrors(bean: pendaftaranSkripsiInstance, field: 'penguji1', 'error')} ">
 	<label for="penguji1">
@@ -84,4 +93,17 @@
 	<g:textField name="email" value="${pendaftaranSkripsiInstance?.email}"/>
 
 </div>
-
+<script>
+function myFunction() {
+    var x = document.getElementById("pembimbing2").value;
+    if (x == 'null') {
+    	document.getElementById('pembimbing2Luar').style.visibility = "visible";
+    	document.getElementById('captionPem2L').style.visibility = "visible";
+    }
+    else{
+    	document.getElementById('pembimbing2Luar').style.visibility = "hidden";
+    	document.getElementById('pembimbing2Luar').value = "";
+    	document.getElementById('captionPem2L').style.visibility = "hidden";
+    }
+}
+</script>
