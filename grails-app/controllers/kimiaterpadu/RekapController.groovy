@@ -5,7 +5,7 @@ import static org.springframework.http.HttpStatus.*
 
 class RekapController {
 
-    def beforeInterceptor = [action:this.&checkUser, except: ['create', 'save']]
+    def beforeInterceptor = [action:this.&checkUser, except: ['create', 'save', 'kuotaDosen']]
      def checkUser() {
         if(!session.user) {
             // i.e. user not logged in
