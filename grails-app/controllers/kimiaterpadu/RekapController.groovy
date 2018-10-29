@@ -5,6 +5,15 @@ import static org.springframework.http.HttpStatus.*
 
 class RekapController {
 
+    def beforeInterceptor = [action:this.&checkUser, except: ['create', 'save']]
+     def checkUser() {
+        if(!session.user) {
+            // i.e. user not logged in
+            redirect(controller:'user', action:'login')
+            return false
+        }
+    }
+
     def index() { 
     }
     def kuotaDosen(){
