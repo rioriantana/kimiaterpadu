@@ -23,6 +23,15 @@ class MahasiswaWisudaController {
         }
     }
 
+    def beforeInterceptor = [action:this.&checkUser, except: ['create', 'save']]
+     def checkUser() {
+        if(!session.user) {
+            // i.e. user not logged in
+            redirect(controller:'user', action:'login')
+            return false
+        }
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond MahasiswaWisuda.list(params), model:[mahasiswaWisudaInstanceCount: MahasiswaWisuda.count()]
